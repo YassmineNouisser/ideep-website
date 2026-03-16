@@ -9,19 +9,11 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor" id="cursor">
-        <div class="cursor-dot"></div>
-        <div class="cursor-circle"></div>
-    </div>
-
-    <!-- Grain Overlay -->
-    <div class="grain-overlay"></div>
 
     <!-- Three.js 3D Scene Canvas -->
     <canvas id="scene-canvas"></canvas>
@@ -32,7 +24,6 @@
             <div class="loader-logo">
                 <img src="logo ideep.png" alt="IDeep">
             </div>
-            <div class="loader-counter" id="loaderCounter">0</div>
             <div class="loader-line"><div class="loader-line-fill" id="loaderLine"></div></div>
         </div>
     </div>
@@ -43,7 +34,7 @@
             <img src="logo ideep.png" alt="IDeep" class="nav-logo-img">
         </a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="#about" data-text-fr="À propos" data-text-en="About">
+            <li><a href="#about">
                 <span data-lang-fr>À propos</span><span data-lang-en>About</span>
             </a></li>
             <li><a href="#services">Services</a></li>
@@ -121,36 +112,49 @@
                 </div>
             </div>
         </div>
+        <!-- Phase Text Overlays -->
+        <div class="hero-phase hero-phase-left" id="phaseWeb">
+            <span class="phase-num">01</span>
+            <h2>
+                <span data-lang-fr>Développement Web</span>
+                <span data-lang-en>Web Development</span>
+            </h2>
+            <p>
+                <span data-lang-fr>Sites modernes et applications web réactives construites avec les dernières technologies.</span>
+                <span data-lang-en>Modern, responsive websites and web apps built with cutting-edge technology.</span>
+            </p>
+        </div>
+        <div class="hero-phase hero-phase-right" id="phaseMobile">
+            <span class="phase-num">02</span>
+            <h2>
+                <span data-lang-fr>Applications Mobiles</span>
+                <span data-lang-en>Mobile Apps</span>
+            </h2>
+            <p>
+                <span data-lang-fr>Applications natives et cross-platform pour iOS et Android.</span>
+                <span data-lang-en>Native and cross-platform apps for iOS and Android.</span>
+            </p>
+        </div>
+        <div class="hero-phase hero-phase-left" id="phaseData">
+            <span class="phase-num">03</span>
+            <h2>
+                <span data-lang-fr>IA & Analytique</span>
+                <span data-lang-en>AI & Analytics</span>
+            </h2>
+            <p>
+                <span data-lang-fr>Dashboards intelligents, modèles de machine learning et analyse prédictive.</span>
+                <span data-lang-en>Smart dashboards, machine learning models and predictive analytics.</span>
+            </p>
+        </div>
+
         <div class="hero-scroll-indicator">
             <span>Scroll</span>
             <div class="scroll-line"></div>
         </div>
     </section>
 
-    <!-- Marquee Strip -->
-    <div class="marquee">
-        <div class="marquee-track">
-            <span>IDeep</span><span>•</span>
-            <span>Development</span><span>•</span>
-            <span>Innovation</span><span>•</span>
-            <span>Design</span><span>•</span>
-            <span>Intelligence</span><span>•</span>
-            <span>IDeep</span><span>•</span>
-            <span>Development</span><span>•</span>
-            <span>Innovation</span><span>•</span>
-            <span>Design</span><span>•</span>
-            <span>Intelligence</span><span>•</span>
-            <span>IDeep</span><span>•</span>
-            <span>Development</span><span>•</span>
-            <span>Innovation</span><span>•</span>
-            <span>Design</span><span>•</span>
-            <span>Intelligence</span><span>•</span>
-        </div>
-    </div>
-
     <!-- ========== ABOUT ========== -->
     <section class="about" id="about">
-        <div class="section-num">01</div>
         <div class="about-inner">
             <div class="about-header">
                 <span class="section-label">
@@ -168,27 +172,6 @@
                         <span data-lang-fr>IDeep est une entreprise de développement fondée par des étudiants ambitieux en informatique. Des plateformes web aux dashboards alimentés par l'IA, nous livrons des solutions qui font une vraie différence.</span>
                         <span data-lang-en>IDeep is a development company founded by ambitious Computer Science students. From web platforms to AI-powered dashboards, we deliver solutions that make a real impact.</span>
                     </p>
-                    <p class="about-desc-secondary" data-anim>
-                        <span data-lang-fr>Notre mission est de prouver que la jeunesse tunisienne a le talent et la détermination pour rivaliser à l'échelle mondiale. Chaque projet que nous livrons porte la marque de notre passion pour le code propre, le design intuitif et les solutions intelligentes.</span>
-                        <span data-lang-en>Our mission is to prove that Tunisian youth have the talent and determination to compete on a global scale. Every project we deliver carries the mark of our passion for clean code, intuitive design, and intelligent solutions.</span>
-                    </p>
-                    <div class="about-pillars" data-anim>
-                        <div class="about-pillar">
-                            <i class="fas fa-shield-halved"></i>
-                            <span data-lang-fr>Code fiable</span>
-                            <span data-lang-en>Reliable code</span>
-                        </div>
-                        <div class="about-pillar">
-                            <i class="fas fa-wand-magic-sparkles"></i>
-                            <span data-lang-fr>Design soigné</span>
-                            <span data-lang-en>Polished design</span>
-                        </div>
-                        <div class="about-pillar">
-                            <i class="fas fa-bolt"></i>
-                            <span data-lang-fr>Livraison rapide</span>
-                            <span data-lang-en>Fast delivery</span>
-                        </div>
-                    </div>
                 </div>
                 <div class="about-stats">
                     <div class="stat" data-anim>
@@ -212,90 +195,6 @@
                             <span data-lang-en>Happy clients</span>
                         </div>
                     </div>
-                    <div class="stat" data-anim>
-                        <div class="stat-num"><span data-count="1200">0</span>+</div>
-                        <div class="stat-label">
-                            <span data-lang-fr>Commits poussés</span>
-                            <span data-lang-en>Commits pushed</span>
-                        </div>
-                    </div>
-                    <div class="stat" data-anim>
-                        <div class="stat-num"><span data-count="1">0</span>+</div>
-                        <div class="stat-label">
-                            <span data-lang-fr>Année d'expérience</span>
-                            <span data-lang-en>Year of experience</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== PROCESS ========== -->
-    <section class="process" id="process">
-        <div class="section-num">02</div>
-        <div class="process-inner">
-            <div class="process-header">
-                <span class="section-label">
-                    <span data-lang-fr>Notre Approche</span>
-                    <span data-lang-en>Our Approach</span>
-                </span>
-                <h2 class="process-heading">
-                    <span data-lang-fr>Comment nous<br>donnons vie à vos idées</span>
-                    <span data-lang-en>How we bring<br>your ideas to life</span>
-                </h2>
-            </div>
-            <div class="process-timeline">
-                <div class="process-card" data-anim>
-                    <span class="process-num">01</span>
-                    <div class="process-icon"><i class="fas fa-magnifying-glass"></i></div>
-                    <h3>
-                        <span data-lang-fr>Découverte</span>
-                        <span data-lang-en>Discovery</span>
-                    </h3>
-                    <p>
-                        <span data-lang-fr>Nous échangeons avec vous pour comprendre votre vision, analyser votre marché et définir des objectifs clairs et mesurables.</span>
-                        <span data-lang-en>We meet with you to understand your vision, analyze your market, and define clear, measurable goals for the project.</span>
-                    </p>
-                </div>
-                <div class="process-connector"></div>
-                <div class="process-card" data-anim>
-                    <span class="process-num">02</span>
-                    <div class="process-icon"><i class="fas fa-pen-ruler"></i></div>
-                    <h3>
-                        <span data-lang-fr>Conception</span>
-                        <span data-lang-en>Design</span>
-                    </h3>
-                    <p>
-                        <span data-lang-fr>Wireframes, maquettes haute-fidélité et prototypes interactifs validés par vos soins avant toute ligne de code.</span>
-                        <span data-lang-en>Wireframes, high-fidelity mockups, and interactive prototypes — validated by you before any code is written.</span>
-                    </p>
-                </div>
-                <div class="process-connector"></div>
-                <div class="process-card" data-anim>
-                    <span class="process-num">03</span>
-                    <div class="process-icon"><i class="fas fa-code"></i></div>
-                    <h3>
-                        <span data-lang-fr>Développement</span>
-                        <span data-lang-en>Development</span>
-                    </h3>
-                    <p>
-                        <span data-lang-fr>Code propre, tests rigoureux et sprints agiles. Nous construisons votre solution avec les meilleures pratiques.</span>
-                        <span data-lang-en>Clean code, rigorous testing, and agile sprints. We build your solution following industry best practices.</span>
-                    </p>
-                </div>
-                <div class="process-connector"></div>
-                <div class="process-card" data-anim>
-                    <span class="process-num">04</span>
-                    <div class="process-icon"><i class="fas fa-rocket"></i></div>
-                    <h3>
-                        <span data-lang-fr>Déploiement</span>
-                        <span data-lang-en>Deployment</span>
-                    </h3>
-                    <p>
-                        <span data-lang-fr>Mise en production, monitoring et support continu. Votre projet est entre de bonnes mains, même après le lancement.</span>
-                        <span data-lang-en>Production deployment, monitoring, and ongoing support. Your project is in good hands, even after launch.</span>
-                    </p>
                 </div>
             </div>
         </div>
@@ -303,9 +202,8 @@
 
     <!-- ========== SERVICES ========== -->
     <section class="services" id="services">
-        <div class="section-num">03</div>
         <div class="services-inner">
-            <div class="section-label">Services</div>
+            <span class="section-label">Services</span>
             <h2 class="services-heading">
                 <span data-lang-fr>Ce que nous<br>faisons de mieux</span>
                 <span data-lang-en>What we<br>do best</span>
@@ -319,15 +217,9 @@
                             <span data-lang-en>Web Development</span>
                         </h3>
                         <p>
-                            <span data-lang-fr>Sites modernes et applications web réactives construites avec les dernières technologies. Du e-commerce au SaaS, nous développons des plateformes performantes et scalables.</span>
-                            <span data-lang-en>Modern, responsive websites and web applications built with the latest technologies. From e-commerce to SaaS, we build performant, scalable platforms.</span>
+                            <span data-lang-fr>Sites modernes et applications web réactives construites avec les dernières technologies.</span>
+                            <span data-lang-en>Modern, responsive websites and web applications built with the latest technologies.</span>
                         </p>
-                        <div class="service-tags">
-                            <span class="service-tag">React</span>
-                            <span class="service-tag">Next.js</span>
-                            <span class="service-tag">Node.js</span>
-                            <span class="service-tag">PostgreSQL</span>
-                        </div>
                     </div>
                     <div class="service-icon"><i class="fas fa-code"></i></div>
                 </div>
@@ -339,14 +231,9 @@
                             <span data-lang-en>UI/UX Design</span>
                         </h3>
                         <p>
-                            <span data-lang-fr>Interfaces élégantes et expériences utilisateur intuitives. Nous concevons chaque pixel pour maximiser l'engagement et la satisfaction.</span>
-                            <span data-lang-en>Elegant interfaces and intuitive user experiences. We design every pixel to maximize engagement and satisfaction.</span>
+                            <span data-lang-fr>Interfaces élégantes et expériences utilisateur intuitives, pixel par pixel.</span>
+                            <span data-lang-en>Elegant interfaces and intuitive user experiences, pixel by pixel.</span>
                         </p>
-                        <div class="service-tags">
-                            <span class="service-tag">Figma</span>
-                            <span class="service-tag">Prototyping</span>
-                            <span class="service-tag">Design System</span>
-                        </div>
                     </div>
                     <div class="service-icon"><i class="fas fa-palette"></i></div>
                 </div>
@@ -358,15 +245,9 @@
                             <span data-lang-en>AI & Data</span>
                         </h3>
                         <p>
-                            <span data-lang-fr>Modèles de machine learning, analyse prédictive et dashboards intelligents. Nous transformons vos données en décisions stratégiques.</span>
-                            <span data-lang-en>Machine learning models, predictive analytics, and smart dashboards. We turn your data into strategic decisions.</span>
+                            <span data-lang-fr>Modèles de machine learning, analyse prédictive et dashboards intelligents.</span>
+                            <span data-lang-en>Machine learning models, predictive analytics, and smart dashboards.</span>
                         </p>
-                        <div class="service-tags">
-                            <span class="service-tag">TensorFlow</span>
-                            <span class="service-tag">Python</span>
-                            <span class="service-tag">Pandas</span>
-                            <span class="service-tag">Power BI</span>
-                        </div>
                     </div>
                     <div class="service-icon"><i class="fas fa-brain"></i></div>
                 </div>
@@ -378,126 +259,18 @@
                             <span data-lang-en>Mobile Apps</span>
                         </h3>
                         <p>
-                            <span data-lang-fr>Applications natives et cross-platform pour iOS et Android. Des apps fluides, rapides et pensées pour l'utilisateur mobile.</span>
-                            <span data-lang-en>Native and cross-platform apps for iOS and Android. Smooth, fast applications designed for the mobile user.</span>
+                            <span data-lang-fr>Applications natives et cross-platform pour iOS et Android.</span>
+                            <span data-lang-en>Native and cross-platform apps for iOS and Android.</span>
                         </p>
-                        <div class="service-tags">
-                            <span class="service-tag">Flutter</span>
-                            <span class="service-tag">React Native</span>
-                            <span class="service-tag">Firebase</span>
-                        </div>
                     </div>
                     <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
                 </div>
-                <div class="service-row" data-anim>
-                    <span class="service-num">05</span>
-                    <div class="service-info">
-                        <h3>
-                            <span data-lang-fr>Conseil & Stratégie</span>
-                            <span data-lang-en>Consulting & Strategy</span>
-                        </h3>
-                        <p>
-                            <span data-lang-fr>Audits techniques, choix de stack technologique et feuille de route produit. Nous vous guidons de l'idée au MVP.</span>
-                            <span data-lang-en>Technical audits, tech stack selection, and product roadmaps. We guide you from idea to MVP.</span>
-                        </p>
-                        <div class="service-tags">
-                            <span class="service-tag">Agile</span>
-                            <span class="service-tag">MVP</span>
-                            <span class="service-tag">Architecture</span>
-                        </div>
-                    </div>
-                    <div class="service-icon"><i class="fas fa-compass"></i></div>
-                </div>
             </div>
         </div>
     </section>
-
-    <!-- ========== TECHNOLOGIES ========== -->
-    <section class="technologies" id="technologies">
-        <div class="section-num">04</div>
-        <div class="technologies-inner">
-            <div class="technologies-header">
-                <span class="section-label">
-                    <span data-lang-fr>Notre Stack</span>
-                    <span data-lang-en>Our Stack</span>
-                </span>
-                <h2 class="technologies-heading">
-                    <span data-lang-fr>Les technologies<br>que nous maîtrisons</span>
-                    <span data-lang-en>Technologies<br>we master</span>
-                </h2>
-            </div>
-            <div class="tech-categories">
-                <div class="tech-category" data-anim>
-                    <h3 class="tech-category-title">Frontend</h3>
-                    <div class="tech-items">
-                        <div class="tech-item"><i class="fab fa-react"></i><span>React</span></div>
-                        <div class="tech-item"><i class="fab fa-vuejs"></i><span>Vue.js</span></div>
-                        <div class="tech-item"><i class="fab fa-angular"></i><span>Angular</span></div>
-                        <div class="tech-item"><i class="fab fa-html5"></i><span>HTML/CSS</span></div>
-                    </div>
-                </div>
-                <div class="tech-category" data-anim>
-                    <h3 class="tech-category-title">Backend</h3>
-                    <div class="tech-items">
-                        <div class="tech-item"><i class="fab fa-node-js"></i><span>Node.js</span></div>
-                        <div class="tech-item"><i class="fab fa-python"></i><span>Python</span></div>
-                        <div class="tech-item"><i class="fab fa-java"></i><span>Java</span></div>
-                        <div class="tech-item"><i class="fab fa-php"></i><span>PHP</span></div>
-                    </div>
-                </div>
-                <div class="tech-category" data-anim>
-                    <h3 class="tech-category-title">Mobile</h3>
-                    <div class="tech-items">
-                        <div class="tech-item"><i class="fas fa-mobile-screen-button"></i><span>Flutter</span></div>
-                        <div class="tech-item"><i class="fab fa-react"></i><span>React Native</span></div>
-                    </div>
-                </div>
-                <div class="tech-category" data-anim>
-                    <h3 class="tech-category-title">Data & AI</h3>
-                    <div class="tech-items">
-                        <div class="tech-item"><i class="fas fa-brain"></i><span>TensorFlow</span></div>
-                        <div class="tech-item"><i class="fas fa-fire"></i><span>PyTorch</span></div>
-                        <div class="tech-item"><i class="fas fa-chart-bar"></i><span>Pandas</span></div>
-                    </div>
-                </div>
-                <div class="tech-category" data-anim>
-                    <h3 class="tech-category-title">Tools</h3>
-                    <div class="tech-items">
-                        <div class="tech-item"><i class="fab fa-git-alt"></i><span>Git</span></div>
-                        <div class="tech-item"><i class="fab fa-docker"></i><span>Docker</span></div>
-                        <div class="tech-item"><i class="fab fa-figma"></i><span>Figma</span></div>
-                        <div class="tech-item"><i class="fab fa-aws"></i><span>AWS</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Marquee Strip — Tech -->
-    <div class="marquee">
-        <div class="marquee-track">
-            <span>React</span><span>•</span>
-            <span>Node.js</span><span>•</span>
-            <span>Python</span><span>•</span>
-            <span>Flutter</span><span>•</span>
-            <span>TensorFlow</span><span>•</span>
-            <span>Figma</span><span>•</span>
-            <span>Docker</span><span>•</span>
-            <span>AWS</span><span>•</span>
-            <span>React</span><span>•</span>
-            <span>Node.js</span><span>•</span>
-            <span>Python</span><span>•</span>
-            <span>Flutter</span><span>•</span>
-            <span>TensorFlow</span><span>•</span>
-            <span>Figma</span><span>•</span>
-            <span>Docker</span><span>•</span>
-            <span>AWS</span><span>•</span>
-        </div>
-    </div>
 
     <!-- ========== PORTFOLIO ========== -->
     <section class="portfolio" id="portfolio">
-        <div class="section-num">05</div>
         <div class="portfolio-inner">
             <div class="portfolio-header">
                 <span class="section-label">Portfolio</span>
@@ -515,12 +288,9 @@
                         <span class="project-cat">Dashboard / Analytics</span>
                         <h3>AZ Airlines</h3>
                         <p>
-                            <span data-lang-fr>Dashboard interactif pour la segmentation client et l'analyse des comportements voyageurs avec visualisation de données en temps réel.</span>
-                            <span data-lang-en>Interactive dashboard for customer segmentation and traveler behavior analytics with real-time data visualization.</span>
+                            <span data-lang-fr>Dashboard interactif pour la segmentation client et l'analyse des comportements voyageurs.</span>
+                            <span data-lang-en>Interactive dashboard for customer segmentation and traveler behavior analytics.</span>
                         </p>
-                        <div class="project-tags">
-                            <span>Python</span><span>Power BI</span><span>Pandas</span>
-                        </div>
                     </div>
                 </article>
                 <article class="project" data-anim>
@@ -531,12 +301,9 @@
                         <span class="project-cat">Web / Health</span>
                         <h3>Eat & Fit</h3>
                         <p>
-                            <span data-lang-fr>Application web de suivi nutritionnel avec plans de repas personnalisés, calcul de macros et suivi d'objectifs fitness.</span>
-                            <span data-lang-en>Nutrition tracking web app with personalized meal plans, macro calculations, and fitness goal tracking.</span>
+                            <span data-lang-fr>Application web de suivi nutritionnel avec plans de repas personnalisés.</span>
+                            <span data-lang-en>Nutrition tracking web app with personalized meal plans.</span>
                         </p>
-                        <div class="project-tags">
-                            <span>React</span><span>Node.js</span><span>MongoDB</span>
-                        </div>
                     </div>
                 </article>
                 <article class="project" data-anim>
@@ -547,12 +314,9 @@
                         <span class="project-cat">Web / Accessibility</span>
                         <h3>IBSAR Voice</h3>
                         <p>
-                            <span data-lang-fr>Plateforme d'accessibilité vocale permettant aux malvoyants de naviguer et interagir avec le contenu web via commandes vocales.</span>
-                            <span data-lang-en>Voice-powered accessibility platform enabling visually impaired users to navigate and interact with web content through voice commands.</span>
+                            <span data-lang-fr>Plateforme d'accessibilité vocale pour naviguer le web via commandes vocales.</span>
+                            <span data-lang-en>Voice-powered accessibility platform for navigating the web through voice commands.</span>
                         </p>
-                        <div class="project-tags">
-                            <span>JavaScript</span><span>Web Speech API</span><span>A11y</span>
-                        </div>
                     </div>
                 </article>
                 <article class="project" data-anim>
@@ -563,42 +327,17 @@
                         <span class="project-cat">Web / Education</span>
                         <h3>Uniboard</h3>
                         <p>
-                            <span data-lang-fr>Plateforme éducative propulsée par l'IA avec génération automatique de quiz, résumés intelligents et suivi de progression.</span>
-                            <span data-lang-en>AI-powered education platform with auto-generated quizzes, smart summaries, and progress tracking.</span>
+                            <span data-lang-fr>Plateforme éducative propulsée par l'IA avec quiz automatiques et suivi de progression.</span>
+                            <span data-lang-en>AI-powered education platform with auto-generated quizzes and progress tracking.</span>
                         </p>
-                        <div class="project-tags">
-                            <span>Next.js</span><span>OpenAI</span><span>PostgreSQL</span>
-                        </div>
                     </div>
                 </article>
             </div>
         </div>
     </section>
 
-    <!-- Marquee Strip 2 -->
-    <div class="marquee marquee-reverse">
-        <div class="marquee-track">
-            <span>Web</span><span>•</span>
-            <span>Mobile</span><span>•</span>
-            <span>AI</span><span>•</span>
-            <span>UI/UX</span><span>•</span>
-            <span>Data</span><span>•</span>
-            <span>Web</span><span>•</span>
-            <span>Mobile</span><span>•</span>
-            <span>AI</span><span>•</span>
-            <span>UI/UX</span><span>•</span>
-            <span>Data</span><span>•</span>
-            <span>Web</span><span>•</span>
-            <span>Mobile</span><span>•</span>
-            <span>AI</span><span>•</span>
-            <span>UI/UX</span><span>•</span>
-            <span>Data</span><span>•</span>
-        </div>
-    </div>
-
     <!-- ========== TEAM ========== -->
     <section class="team" id="team">
-        <div class="section-num">06</div>
         <div class="team-inner">
             <div class="team-header">
                 <span class="section-label">
@@ -669,107 +408,8 @@
         </div>
     </section>
 
-    <!-- ========== VALUES / WHY US ========== -->
-    <section class="values" id="values">
-        <div class="section-num">07</div>
-        <div class="values-inner">
-            <div class="values-header">
-                <span class="section-label">
-                    <span data-lang-fr>Pourquoi IDeep</span>
-                    <span data-lang-en>Why IDeep</span>
-                </span>
-                <h2 class="values-heading">
-                    <span data-lang-fr>Ce qui nous<br>distingue</span>
-                    <span data-lang-en>What sets<br>us apart</span>
-                </h2>
-            </div>
-            <div class="values-grid">
-                <div class="value-card" data-anim>
-                    <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
-                    <h3>Innovation</h3>
-                    <p>
-                        <span data-lang-fr>Nous explorons les nouvelles technologies pour créer des solutions qui repoussent les limites du possible.</span>
-                        <span data-lang-en>We explore emerging technologies to create solutions that push the boundaries of what's possible.</span>
-                    </p>
-                </div>
-                <div class="value-card" data-anim>
-                    <div class="value-icon"><i class="fas fa-gem"></i></div>
-                    <h3>
-                        <span data-lang-fr>Qualité</span>
-                        <span data-lang-en>Quality</span>
-                    </h3>
-                    <p>
-                        <span data-lang-fr>Du design au déploiement, chaque détail est soigné. Nous ne livrons que ce dont nous sommes fiers.</span>
-                        <span data-lang-en>From design to deployment, every detail is polished. We only ship what we're proud of.</span>
-                    </p>
-                </div>
-                <div class="value-card" data-anim>
-                    <div class="value-icon"><i class="fas fa-handshake"></i></div>
-                    <h3>Collaboration</h3>
-                    <p>
-                        <span data-lang-fr>Transparence totale, communication constante. Vous faites partie de l'équipe du début à la fin.</span>
-                        <span data-lang-en>Full transparency, constant communication. You're part of the team from start to finish.</span>
-                    </p>
-                </div>
-                <div class="value-card" data-anim>
-                    <div class="value-icon"><i class="fas fa-bolt"></i></div>
-                    <h3>
-                        <span data-lang-fr>Agilité</span>
-                        <span data-lang-en>Agility</span>
-                    </h3>
-                    <p>
-                        <span data-lang-fr>Itérations rapides, retours fréquents. Notre process agile s'adapte à votre rythme et vos priorités.</span>
-                        <span data-lang-en>Fast iterations, frequent feedback. Our agile process adapts to your pace and priorities.</span>
-                    </p>
-                </div>
-                <div class="value-card" data-anim>
-                    <div class="value-icon"><i class="fas fa-fire"></i></div>
-                    <h3>Passion</h3>
-                    <p>
-                        <span data-lang-fr>Le code est notre art. Chaque projet est une occasion de se surpasser et d'apprendre.</span>
-                        <span data-lang-en>Code is our craft. Every project is an opportunity to excel and grow.</span>
-                    </p>
-                </div>
-                <div class="value-card" data-anim>
-                    <div class="value-icon"><i class="fas fa-eye"></i></div>
-                    <h3>
-                        <span data-lang-fr>Transparence</span>
-                        <span data-lang-en>Transparency</span>
-                    </h3>
-                    <p>
-                        <span data-lang-fr>Pas de surprises. Suivi en temps réel, pricing clair et documentation complète pour chaque projet.</span>
-                        <span data-lang-en>No surprises. Real-time tracking, clear pricing, and full documentation for every project.</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== CTA BANNER ========== -->
-    <section class="cta-banner" data-anim>
-        <div class="cta-banner-inner">
-            <h2>
-                <span data-lang-fr>Prêt à donner vie<br>à votre prochain projet ?</span>
-                <span data-lang-en>Ready to bring your<br>next project to life?</span>
-            </h2>
-            <p>
-                <span data-lang-fr>Discutons de votre vision. Premier échange gratuit, sans engagement.</span>
-                <span data-lang-en>Let's discuss your vision. First consultation is free, no strings attached.</span>
-            </p>
-            <a href="#contact" class="cta-banner-btn" data-magnetic>
-                <span class="btn-fill"></span>
-                <span class="btn-text">
-                    <span data-lang-fr>Démarrer un projet</span>
-                    <span data-lang-en>Start a project</span>
-                </span>
-                <span class="btn-arrow">→</span>
-            </a>
-        </div>
-    </section>
-
     <!-- ========== CONTACT ========== -->
     <section class="contact" id="contact">
-        <div class="section-num">08</div>
         <div class="contact-inner">
             <div class="contact-heading">
                 <h2>
@@ -796,7 +436,6 @@
                 <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
             </div>
         </div>
     </section>
@@ -823,6 +462,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="js/screen-content.js"></script>
     <script src="js/scene3d.js"></script>
     <script src="js/main.js"></script>
     <script src="js/nav.js"></script>
