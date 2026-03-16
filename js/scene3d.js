@@ -17,10 +17,10 @@
         powerPreference: 'high-performance'
     });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2.5));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.15;
+    renderer.toneMappingExposure = 1.25;
     renderer.shadowMap.enabled = !isMobile;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
@@ -70,8 +70,8 @@
     // MATERIALS
     // ========================================
     var bodyMaterial = new THREE.MeshPhysicalMaterial({
-        color: 0x303034, metalness: 0.92, roughness: 0.15,
-        clearcoat: 0.7, clearcoatRoughness: 0.12, envMap: envMap, envMapIntensity: 1.6
+        color: 0x303034, metalness: 0.95, roughness: 0.1,
+        clearcoat: 0.85, clearcoatRoughness: 0.06, envMap: envMap, envMapIntensity: 2.0
     });
     var bottomMaterial = new THREE.MeshPhysicalMaterial({
         color: 0x222226, metalness: 0.88, roughness: 0.22,
@@ -90,16 +90,16 @@
     });
     var rubberMaterial = new THREE.MeshStandardMaterial({ color: 0x0a0a0a, metalness: 0, roughness: 0.95 });
     var screenGlassMaterial = new THREE.MeshPhysicalMaterial({
-        color: 0x000000, metalness: 0, roughness: 0.05, transparent: true, opacity: 0.04,
-        clearcoat: 1.0, clearcoatRoughness: 0.03, envMap: envMap, envMapIntensity: 0.7, depthWrite: false
+        color: 0x000000, metalness: 0, roughness: 0.03, transparent: true, opacity: 0.025,
+        clearcoat: 1.0, clearcoatRoughness: 0.02, envMap: envMap, envMapIntensity: 0.5, depthWrite: false
     });
     var phoneMaterial = new THREE.MeshPhysicalMaterial({
-        color: 0x1c1c1e, metalness: 0.9, roughness: 0.12,
-        clearcoat: 0.8, clearcoatRoughness: 0.1, envMap: envMap, envMapIntensity: 1.8
+        color: 0x1c1c1e, metalness: 0.95, roughness: 0.08,
+        clearcoat: 0.9, clearcoatRoughness: 0.05, envMap: envMap, envMapIntensity: 2.2
     });
     var tabletMaterial = new THREE.MeshPhysicalMaterial({
-        color: 0x28282c, metalness: 0.88, roughness: 0.14,
-        clearcoat: 0.75, clearcoatRoughness: 0.1, envMap: envMap, envMapIntensity: 1.6
+        color: 0x28282c, metalness: 0.93, roughness: 0.08,
+        clearcoat: 0.85, clearcoatRoughness: 0.05, envMap: envMap, envMapIntensity: 2.0
     });
     var shapeMaterial = new THREE.MeshPhysicalMaterial({
         color: 0x2D9CDB, metalness: 0.3, roughness: 0.4, transparent: true, opacity: 0.15, wireframe: true
@@ -711,12 +711,6 @@
     var glassMesh = new THREE.Mesh(new THREE.PlaneGeometry(scrW + 0.01, scrD + 0.01), screenGlassMaterial);
     glassMesh.rotation.x = Math.PI / 2; glassMesh.position.set(0, -0.003, D / 2); glassMesh.renderOrder = 1; lidGroup.add(glassMesh);
 
-    var glowMat = new THREE.MeshBasicMaterial({
-        color: 0x2D9CDB, transparent: true, opacity: 0,
-        blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide
-    });
-    var glowMesh = new THREE.Mesh(new THREE.PlaneGeometry(3.5, 2.5), glowMat);
-    glowMesh.rotation.x = Math.PI / 2; glowMesh.position.set(0, -0.05, D / 2); lidGroup.add(glowMesh);
 
     var camLedMat = new THREE.MeshBasicMaterial({ color: 0x00ff00, transparent: true, opacity: 0 });
     var camDot = new THREE.Mesh(new THREE.CircleGeometry(0.012, 16), new THREE.MeshBasicMaterial({ color: 0x1a1a2e }));
@@ -750,9 +744,21 @@
     var phoneGlass = new THREE.Mesh(new THREE.PlaneGeometry(pScrW + 0.005, pScrH + 0.005), screenGlassMaterial);
     phoneGlass.position.z = PT / 2 + 0.003; phoneGlass.renderOrder = 3; phone.add(phoneGlass);
 
-    var phoneFrame = new THREE.Mesh(new THREE.BoxGeometry(PW + 0.006, PH + 0.006, PT + 0.004),
-        new THREE.MeshPhysicalMaterial({ color: 0x2a2a32, metalness: 0.95, roughness: 0.1, envMap: envMap, envMapIntensity: 1.5 }));
-    phone.add(phoneFrame);
+    // Thin side band instead of full overlapping frame (prevents z-fighting/flickering)
+    var phoneSideMat = new THREE.MeshPhysicalMaterial({ color: 0x2a2a32, metalness: 0.95, roughness: 0.1, envMap: envMap, envMapIntensity: 1.5 });
+    var sideT = 0.004;
+    // Left side
+    var pSideL = new THREE.Mesh(new THREE.BoxGeometry(sideT, PH + 0.006, PT + 0.004), phoneSideMat);
+    pSideL.position.x = -(PW + 0.006) / 2; phone.add(pSideL);
+    // Right side
+    var pSideR = new THREE.Mesh(new THREE.BoxGeometry(sideT, PH + 0.006, PT + 0.004), phoneSideMat);
+    pSideR.position.x = (PW + 0.006) / 2; phone.add(pSideR);
+    // Top side
+    var pSideTop = new THREE.Mesh(new THREE.BoxGeometry(PW + 0.006, sideT, PT + 0.004), phoneSideMat);
+    pSideTop.position.y = (PH + 0.006) / 2; phone.add(pSideTop);
+    // Bottom side
+    var pSideBot = new THREE.Mesh(new THREE.BoxGeometry(PW + 0.006, sideT, PT + 0.004), phoneSideMat);
+    pSideBot.position.y = -(PH + 0.006) / 2; phone.add(pSideBot);
 
     var camBump = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.025, 0.008, 16),
         new THREE.MeshPhysicalMaterial({ color: 0x1a1a20, metalness: 0.9, roughness: 0.2, envMap: envMap }));
@@ -779,9 +785,17 @@
     var tabletGlass = new THREE.Mesh(new THREE.PlaneGeometry(tScrW + 0.005, tScrH + 0.005), screenGlassMaterial);
     tabletGlass.position.z = TT / 2 + 0.003; tabletGlass.renderOrder = 3; tablet.add(tabletGlass);
 
-    var tabletFrame = new THREE.Mesh(new THREE.BoxGeometry(TW + 0.005, TH + 0.005, TT + 0.003),
-        new THREE.MeshPhysicalMaterial({ color: 0x2a2a32, metalness: 0.95, roughness: 0.1, envMap: envMap, envMapIntensity: 1.5 }));
-    tablet.add(tabletFrame);
+    // Side bands instead of overlapping frame (prevents z-fighting)
+    var tabSideMat = new THREE.MeshPhysicalMaterial({ color: 0x2a2a32, metalness: 0.95, roughness: 0.1, envMap: envMap, envMapIntensity: 1.5 });
+    var tSideT = 0.004;
+    var tSL = new THREE.Mesh(new THREE.BoxGeometry(tSideT, TH + 0.005, TT + 0.003), tabSideMat);
+    tSL.position.x = -(TW + 0.005) / 2; tablet.add(tSL);
+    var tSR = new THREE.Mesh(new THREE.BoxGeometry(tSideT, TH + 0.005, TT + 0.003), tabSideMat);
+    tSR.position.x = (TW + 0.005) / 2; tablet.add(tSR);
+    var tSTop = new THREE.Mesh(new THREE.BoxGeometry(TW + 0.005, tSideT, TT + 0.003), tabSideMat);
+    tSTop.position.y = (TH + 0.005) / 2; tablet.add(tSTop);
+    var tSBot = new THREE.Mesh(new THREE.BoxGeometry(TW + 0.005, tSideT, TT + 0.003), tabSideMat);
+    tSBot.position.y = -(TH + 0.005) / 2; tablet.add(tSBot);
 
     // Front camera dot
     var tabletCam = new THREE.Mesh(new THREE.CircleGeometry(0.006, 16), new THREE.MeshBasicMaterial({ color: 0x1a1a2e }));
@@ -874,7 +888,7 @@
     scene.add(new THREE.DirectionalLight(0x8899cc, 0.9).translateX(-3).translateY(3).translateZ(-2));
     var rimLight = new THREE.DirectionalLight(0x3366cc, 1.4);
     rimLight.position.set(0, 2, -5); scene.add(rimLight);
-    scene.add(new THREE.AmbientLight(0x151520, 0.35));
+    scene.add(new THREE.AmbientLight(0x1a1520, 0.45));
     var spotLight = new THREE.SpotLight(0xccccdd, 0.6);
     spotLight.position.set(0, 8, 2); spotLight.angle = Math.PI / 6; spotLight.penumbra = 0.8; spotLight.decay = 2; scene.add(spotLight);
     var screenLight = new THREE.PointLight(0x4499dd, 0, 3);
@@ -906,7 +920,6 @@
         cameraX: 0, cameraY: 3.0, cameraZ: 2.5,
         rotationY: 0, lidAngle: 0, laptopX: 0, laptopScale: isMobile ? 0.7 : 1,
         screenPowered: false,
-        glowIntensity: 0,
         phoneArc: 0,
         tabletArc: 0,
         globeScale: 0, globeVisible: false,
@@ -954,8 +967,7 @@
         }
     }, 12);
     heroTl.to(scrollState, { cameraZ: 4.2, cameraY: 1.0, rotationY: Math.PI * 0.45, duration: 12, ease: 'power2.inOut' }, 12);
-    heroTl.to(scrollState, { glowIntensity: 0.6, duration: 5, ease: 'power2.out' }, 18);
-    heroTl.to(screenLight, { intensity: 3.0, duration: 6 }, 18);
+    heroTl.to(screenLight, { intensity: 2.0, duration: 6 }, 18);
     // Phase text: Web Development
     heroTl.to('#phaseWeb', { opacity: 1, y: 0, duration: 4, ease: 'power2.out' }, 17);
     heroTl.to('#phaseWeb', { opacity: 0, duration: 3, ease: 'power2.in' }, 24);
@@ -966,9 +978,8 @@
     heroTl.to(scrollState, { laptopX: isMobile ? 0.5 : 1.6, duration: 10, ease: 'power2.inOut' }, 26);
     heroTl.to(scrollState, { cameraZ: 5.5, cameraX: -0.2, cameraY: 0.8, duration: 12, ease: 'power2.out' }, 26);
     heroTl.to(scrollState, { rotationY: Math.PI * 0.6, duration: 14, ease: 'power2.inOut' }, 26);
-    heroTl.to(scrollState, { glowIntensity: 0.2, duration: 5 }, 26);
-    // Phone arc entrance
-    heroTl.to(scrollState, { phoneArc: 1, duration: 12, ease: 'power3.out' }, 28);
+    // Phone arc entrance (delayed to avoid overlapping laptop)
+    heroTl.to(scrollState, { phoneArc: 1, duration: 12, ease: 'power3.out' }, 30);
     // Phase text: Mobile Apps
     heroTl.to('#phaseMobile', { opacity: 1, y: 0, duration: 4, ease: 'power2.out' }, 32);
     heroTl.to('#phaseMobile', { opacity: 0, duration: 3, ease: 'power2.in' }, 40);
@@ -1011,7 +1022,6 @@
     heroTl.to(scrollState, { phoneArc: 0, duration: 10, ease: 'power2.in' }, 91);
     heroTl.to(scrollState, { tabletArc: 0, duration: 10, ease: 'power2.in' }, 91);
     heroTl.to(screenLight, { intensity: 0, duration: 8 }, 91);
-    heroTl.to(scrollState, { glowIntensity: 0, duration: 5 }, 91);
     heroTl.to('.hero-scroll-indicator', { opacity: 1, duration: 5 }, 95);
 
     // ========================================
@@ -1047,8 +1057,8 @@
     // ========================================
     var mouse = { x: 0, y: 0, tx: 0, ty: 0 };
     document.addEventListener('mousemove', function (e) {
-        mouse.tx = (e.clientX / window.innerWidth - 0.5) * 0.3;
-        mouse.ty = (e.clientY / window.innerHeight - 0.5) * 0.15;
+        mouse.tx = (e.clientX / window.innerWidth - 0.5) * 0.2;
+        mouse.ty = (e.clientY / window.innerHeight - 0.5) * 0.08;
     });
 
     // ========================================
@@ -1069,23 +1079,20 @@
         // Laptop transform
         laptop.rotation.y = scrollState.rotationY + mouse.x;
         laptop.position.x = scrollState.laptopX;
-        laptop.position.y = -0.3 + Math.sin(time * 0.8) * 0.03;
+        laptop.position.y = -0.3 + Math.sin(time * 0.5) * 0.012;
         laptop.scale.setScalar(scrollState.laptopScale);
         lidGroup.rotation.x = scrollState.lidAngle;
 
-        // Screen glow
-        glowMat.opacity = scrollState.glowIntensity * (0.8 + Math.sin(time * 2) * 0.2);
 
         // ---- PHONE ARC TRAJECTORY ----
         var arcT = scrollState.phoneArc;
         if (arcT > 0.01) {
-            var sX = 3.5, sY = -2.8, cX = 0, cY = 0.8;
-            var eX = isMobile ? -0.3 : -1.3, eY = isMobile ? -0.5 : 0.1;
+            var sX = 5, sY = -4, cX = -0.5, cY = 1.0;
+            var eX = isMobile ? -0.3 : -1.8, eY = isMobile ? -0.5 : 0.4;
             phone.position.x = (1 - arcT) * (1 - arcT) * sX + 2 * (1 - arcT) * arcT * cX + arcT * arcT * eX;
             phone.position.y = (1 - arcT) * (1 - arcT) * sY + 2 * (1 - arcT) * arcT * cY + arcT * arcT * eY;
-            phone.position.y += Math.sin(time * 0.6 + 1) * 0.04;
-            phone.rotation.y = 0.2 * arcT + mouse.x * 0.5;
-            phone.rotation.x = Math.sin(time * 0.4) * 0.02;
+            phone.position.y += Math.sin(time * 0.3 + 1) * 0.015;
+            phone.rotation.y = 0.15 * arcT + mouse.x * 0.3;
         } else {
             phone.position.set(4, -3, 0);
         }
@@ -1094,15 +1101,15 @@
         // Enters from top-right, lands above & in front of laptop
         var tabT = scrollState.tabletArc;
         if (tabT > 0.01) {
-            var tsX = 4, tsY = 3.5, tcX = -1, tcY = 2.5;
-            var teX = isMobile ? 0 : -0.8, teY = isMobile ? 0.8 : 1.6;
+            var tsX = 4, tsY = 3.0, tcX = -1, tcY = 1.2;
+            var teX = isMobile ? 0 : -0.8, teY = isMobile ? 0.3 : 0.5;
             tablet.position.x = (1 - tabT) * (1 - tabT) * tsX + 2 * (1 - tabT) * tabT * tcX + tabT * tabT * teX;
             tablet.position.y = (1 - tabT) * (1 - tabT) * tsY + 2 * (1 - tabT) * tabT * tcY + tabT * tabT * teY;
-            tablet.position.y += Math.sin(time * 0.5 + 2) * 0.04;
-            tablet.position.z = 1.0 * tabT; // In front so it's never behind laptop
-            tablet.rotation.y = -0.12 * tabT + mouse.x * 0.4;
-            tablet.rotation.x = Math.sin(time * 0.3) * 0.02 - 0.03;
-            tablet.rotation.z = 0.02 * Math.sin(time * 0.35);
+            tablet.position.y += Math.sin(time * 0.25 + 2) * 0.012;
+            tablet.position.z = 1.0 * tabT;
+            tablet.rotation.y = -0.1 * tabT + mouse.x * 0.25;
+            tablet.rotation.x = -0.02;
+            tablet.rotation.z = 0;
         } else {
             tablet.position.set(5, -4, 1);
         }
@@ -1134,7 +1141,7 @@
             var sh = floatingShapes[si];
             sh.rotation.x += sh.userData.speed * 0.005;
             sh.rotation.y += sh.userData.speed * 0.008;
-            sh.position.y = sh.userData.baseY + Math.sin(time * sh.userData.speed + si * 2) * 0.3;
+            sh.position.y = sh.userData.baseY + Math.sin(time * sh.userData.speed + si * 2) * 0.15;
         }
 
         // Scrollable screen updates (only when scroll offset changes)
