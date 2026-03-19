@@ -1,5 +1,5 @@
 /* ============================================
-   IDeep — Main Animations & Language
+   IDeep — Main Animations & Language & Theme
    Apple-style scroll-driven reveals
    ============================================ */
 (function () {
@@ -24,7 +24,7 @@
     }
 
     // ========================================
-    // LOADER (minimal — line fill only)
+    // LOADER
     // ========================================
     var loader = document.getElementById('loader');
     var loaderLine = document.getElementById('loaderLine');
@@ -83,20 +83,51 @@
     }
 
     // ========================================
-    // LANGUAGE
+    // LANGUAGE (FR / EN / AR)
     // ========================================
     var langToggle = document.getElementById('langToggle');
     var html = document.documentElement;
     var savedLang = localStorage.getItem('ideep-lang') || 'fr';
-    html.className = 'lang-' + savedLang;
+    var savedTheme = localStorage.getItem('ideep-theme') || 'dark';
+
+    // Apply saved language
+    applyLang(savedLang);
+
+    function applyLang(lang) {
+        html.classList.remove('lang-fr', 'lang-en', 'lang-ar');
+        html.classList.add('lang-' + lang);
+        localStorage.setItem('ideep-lang', lang);
+        ScrollTrigger.refresh();
+    }
 
     if (langToggle) {
         langToggle.addEventListener('click', function () {
-            var cur = html.classList.contains('lang-fr') ? 'fr' : 'en';
-            var next = cur === 'fr' ? 'en' : 'fr';
-            html.className = 'lang-' + next;
-            localStorage.setItem('ideep-lang', next);
-            ScrollTrigger.refresh();
+            var cur = html.classList.contains('lang-fr') ? 'fr' : html.classList.contains('lang-en') ? 'en' : 'ar';
+            var langs = ['fr', 'en', 'ar'];
+            var idx = langs.indexOf(cur);
+            var next = langs[(idx + 1) % 3];
+            applyLang(next);
+        });
+    }
+
+    // ========================================
+    // THEME (DARK / LIGHT)
+    // ========================================
+    var themeToggle = document.getElementById('themeToggle');
+
+    applyTheme(savedTheme);
+
+    function applyTheme(theme) {
+        html.classList.remove('theme-dark', 'theme-light');
+        html.classList.add('theme-' + theme);
+        localStorage.setItem('ideep-theme', theme);
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function () {
+            var cur = html.classList.contains('theme-dark') ? 'dark' : 'light';
+            var next = cur === 'dark' ? 'light' : 'dark';
+            applyTheme(next);
         });
     }
 
@@ -104,7 +135,6 @@
     // SPLIT TEXT UTILITY
     // ========================================
     function wrapWords(html) {
-        // Split by <br> tags, wrap words in each segment, rejoin with <br>
         var segments = html.split(/(<br\s*\/?>)/gi);
         var out = '';
         for (var s = 0; s < segments.length; s++) {
@@ -121,7 +151,7 @@
     function splitTextIntoWords(el) {
         if (el.querySelector('.split-word')) return;
 
-        var langSpans = el.querySelectorAll('[data-lang-fr], [data-lang-en]');
+        var langSpans = el.querySelectorAll('[data-lang-fr], [data-lang-en], [data-lang-ar]');
         if (langSpans.length > 0) {
             langSpans.forEach(function (span) {
                 span.innerHTML = wrapWords(span.innerHTML);
@@ -132,7 +162,7 @@
     }
 
     // ========================================
-    // ABOUT SECTION — Clean fade-up reveals
+    // ABOUT SECTION
     // ========================================
     (function () {
         var section = document.querySelector('.about');
@@ -161,33 +191,19 @@
 
         if (aboutTitle) {
             var titleWords = aboutTitle.querySelectorAll('.split-word-inner');
-            tl.to(titleWords, {
-                y: '0%',
-                duration: 6,
-                stagger: 0.4,
-                ease: 'power3.out'
-            }, 1);
+            tl.to(titleWords, { y: '0%', duration: 6, stagger: 0.4, ease: 'power3.out' }, 1);
         }
 
         if (aboutDesc) {
             var descWords = aboutDesc.querySelectorAll('.split-word-inner');
-            tl.to(descWords, {
-                y: '0%',
-                duration: 4,
-                stagger: 0.15,
-                ease: 'power2.out'
-            }, 5);
+            tl.to(descWords, { y: '0%', duration: 4, stagger: 0.15, ease: 'power2.out' }, 5);
         }
 
-        // Stats — subtle fade up
         var stats = section.querySelectorAll('.stat');
         stats.forEach(function (stat, i) {
-            tl.fromTo(stat,
-                { opacity: 0, y: 30 },
-                { opacity: 1, y: 0, duration: 4, ease: 'power2.out' }, 7 + i * 1.5);
+            tl.fromTo(stat, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 4, ease: 'power2.out' }, 7 + i * 1.5);
         });
 
-        // Counter animation
         section.querySelectorAll('[data-count]').forEach(function (el) {
             var target = parseInt(el.dataset.count);
             ScrollTrigger.create({
@@ -207,7 +223,7 @@
     })();
 
     // ========================================
-    // SERVICES SECTION — Clean row reveals
+    // SERVICES SECTION
     // ========================================
     (function () {
         var section = document.querySelector('.services');
@@ -234,25 +250,16 @@
 
         if (heading) {
             var words = heading.querySelectorAll('.split-word-inner');
-            tl.to(words, {
-                y: '0%',
-                duration: 5,
-                stagger: 0.3,
-                ease: 'power3.out'
-            }, 1);
+            tl.to(words, { y: '0%', duration: 5, stagger: 0.3, ease: 'power3.out' }, 1);
         }
 
-        // Service rows — fade up with stagger
         rows.forEach(function (row, i) {
-            tl.fromTo(row,
-                { opacity: 0, y: 40 },
-                { opacity: 1, y: 0, duration: 5, ease: 'power2.out' },
-                4 + i * 1.5);
+            tl.fromTo(row, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 5, ease: 'power2.out' }, 4 + i * 1.5);
         });
     })();
 
     // ========================================
-    // PORTFOLIO SECTION — Subtle card reveals
+    // PORTFOLIO SECTION
     // ========================================
     (function () {
         var section = document.querySelector('.portfolio');
@@ -279,34 +286,21 @@
 
         if (heading) {
             var words = heading.querySelectorAll('.split-word-inner');
-            tl.to(words, {
-                y: '0%',
-                duration: 5,
-                stagger: 0.3,
-                ease: 'power3.out'
-            }, 1);
+            tl.to(words, { y: '0%', duration: 5, stagger: 0.3, ease: 'power3.out' }, 1);
         }
 
-        // Projects — fade up + subtle scale
         projects.forEach(function (proj, i) {
-            tl.fromTo(proj,
-                { opacity: 0, y: 60, scale: 0.97 },
-                { opacity: 1, y: 0, scale: 1, duration: 6, ease: 'power2.out' },
-                4 + i * 2);
+            tl.fromTo(proj, { opacity: 0, y: 60, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 6, ease: 'power2.out' }, 4 + i * 2);
 
-            // Subtle parallax on project image
             var img = proj.querySelector('.project-img img');
             if (img) {
-                tl.fromTo(img,
-                    { scale: 1.08 },
-                    { scale: 1, duration: 8, ease: 'none' },
-                    4 + i * 2);
+                tl.fromTo(img, { scale: 1.08 }, { scale: 1, duration: 8, ease: 'none' }, 4 + i * 2);
             }
         });
     })();
 
     // ========================================
-    // TEAM SECTION — Simple fade-up stagger
+    // TEAM SECTION — Group Photo + Zoom Circles
     // ========================================
     (function () {
         var section = document.querySelector('.team');
@@ -314,7 +308,8 @@
 
         var heading = section.querySelector('.team-header h2');
         var label = section.querySelector('.section-label');
-        var members = section.querySelectorAll('.member');
+        var groupPhoto = section.querySelector('.team-group-photo');
+        var cards = section.querySelectorAll('.team-member-card');
 
         if (heading) splitTextIntoWords(heading);
 
@@ -333,25 +328,25 @@
 
         if (heading) {
             var words = heading.querySelectorAll('.split-word-inner');
-            tl.to(words, {
-                y: '0%',
-                duration: 5,
-                stagger: 0.3,
-                ease: 'power3.out'
-            }, 1);
+            tl.to(words, { y: '0%', duration: 5, stagger: 0.3, ease: 'power3.out' }, 1);
         }
 
-        // Members — clean fade up with stagger
-        members.forEach(function (m, i) {
-            tl.fromTo(m,
-                { opacity: 0, y: 40, scale: 0.98 },
-                { opacity: 1, y: 0, scale: 1, duration: 4, ease: 'power2.out' },
-                4 + i * 1);
+        // Group photo reveal
+        if (groupPhoto) {
+            tl.fromTo(groupPhoto, { opacity: 0, y: 40, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 6, ease: 'power2.out' }, 4);
+        }
+
+        // Member cards — staggered zoom in from group photo
+        cards.forEach(function (card, i) {
+            tl.fromTo(card,
+                { opacity: 0, y: 30, scale: 0.8 },
+                { opacity: 1, y: 0, scale: 1, duration: 4, ease: 'power3.out' },
+                7 + i * 0.8);
         });
     })();
 
     // ========================================
-    // CONTACT — Clean line reveals
+    // CONTACT
     // ========================================
     (function () {
         var section = document.querySelector('.contact');
@@ -368,35 +363,27 @@
         });
 
         contactLines.forEach(function (line, i) {
-            tl.fromTo(line,
-                { y: '120%' },
-                { y: '0%', duration: 6, ease: 'power3.out' }, i * 2);
+            tl.fromTo(line, { y: '120%' }, { y: '0%', duration: 6, ease: 'power3.out' }, i * 2);
         });
 
         var contactSub = section.querySelector('.contact-sub');
         if (contactSub) {
-            tl.fromTo(contactSub,
-                { opacity: 0, y: 20 },
-                { opacity: 1, y: 0, duration: 4, ease: 'power2.out' }, 4);
+            tl.fromTo(contactSub, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 4, ease: 'power2.out' }, 4);
         }
 
         var contactEmail = section.querySelector('.contact-email');
         if (contactEmail) {
-            tl.fromTo(contactEmail,
-                { opacity: 0, y: 20 },
-                { opacity: 1, y: 0, duration: 4, ease: 'power3.out' }, 5);
+            tl.fromTo(contactEmail, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 4, ease: 'power3.out' }, 5);
         }
 
         var socials = section.querySelector('.contact-socials');
         if (socials) {
-            tl.fromTo(socials,
-                { opacity: 0, y: 20 },
-                { opacity: 1, y: 0, duration: 3, ease: 'power2.out' }, 6);
+            tl.fromTo(socials, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 3, ease: 'power2.out' }, 6);
         }
     })();
 
     // ========================================
-    // GLOW LINES — Section dividers
+    // GLOW LINES
     // ========================================
     document.querySelectorAll('.glow-line').forEach(function (line) {
         gsap.to(line, {

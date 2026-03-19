@@ -7,7 +7,6 @@
     var mobileMenu = document.getElementById('mobileMenu');
     var links = document.querySelectorAll('.nav-links a, .mobile-menu a');
     var sections = document.querySelectorAll('section[id]');
-    var lastScroll = 0;
 
     // Show nav after hero scroll starts
     ScrollTrigger.create({

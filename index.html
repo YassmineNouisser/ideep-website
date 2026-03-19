@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" class="lang-fr">
+<html lang="fr" class="lang-fr theme-dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -35,20 +35,28 @@
         </a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#about">
-                <span data-lang-fr>À propos</span><span data-lang-en>About</span>
+                <span data-lang-fr>À propos</span><span data-lang-en>About</span><span data-lang-ar>من نحن</span>
             </a></li>
-            <li><a href="#services">Services</a></li>
+            <li><a href="#services">
+                <span data-lang-fr>Services</span><span data-lang-en>Services</span><span data-lang-ar>خدماتنا</span>
+            </a></li>
             <li><a href="#portfolio">Portfolio</a></li>
             <li><a href="#team">
-                <span data-lang-fr>Équipe</span><span data-lang-en>Team</span>
+                <span data-lang-fr>Équipe</span><span data-lang-en>Team</span><span data-lang-ar>الفريق</span>
             </a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="nav-right">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <i class="fas fa-sun theme-icon-light"></i>
+                <i class="fas fa-moon theme-icon-dark"></i>
+            </button>
             <button class="lang-toggle" id="langToggle">
                 <span class="lang-opt active-lang" data-lang="fr">FR</span>
                 <span class="lang-sep">/</span>
                 <span class="lang-opt" data-lang="en">EN</span>
+                <span class="lang-sep">/</span>
+                <span class="lang-opt" data-lang="ar">ع</span>
             </button>
             <button class="nav-burger" id="navBurger" aria-label="Menu">
                 <span></span><span></span>
@@ -59,10 +67,10 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <ul>
-            <li><a href="#about"><span data-lang-fr>À propos</span><span data-lang-en>About</span></a></li>
-            <li><a href="#services">Services</a></li>
+            <li><a href="#about"><span data-lang-fr>À propos</span><span data-lang-en>About</span><span data-lang-ar>من نحن</span></a></li>
+            <li><a href="#services"><span data-lang-fr>Services</span><span data-lang-en>Services</span><span data-lang-ar>خدماتنا</span></a></li>
             <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#team"><span data-lang-fr>Équipe</span><span data-lang-en>Team</span></a></li>
+            <li><a href="#team"><span data-lang-fr>Équipe</span><span data-lang-en>Team</span><span data-lang-ar>الفريق</span></a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </div>
@@ -75,30 +83,35 @@
                     <span class="hero-tag-line"></span>
                     <span data-lang-fr>Studio de développement</span>
                     <span data-lang-en>Development Studio</span>
+                    <span data-lang-ar>استوديو تطوير</span>
                 </div>
                 <h1 class="hero-title">
                     <span class="hero-line" data-reveal>
                         <span class="hero-line-inner">
                             <span data-lang-fr>Transformer</span>
                             <span data-lang-en>Transforming</span>
+                            <span data-lang-ar>نحوّل</span>
                         </span>
                     </span>
                     <span class="hero-line" data-reveal>
                         <span class="hero-line-inner">
                             <span data-lang-fr>les idées en</span>
                             <span data-lang-en>ideas into</span>
+                            <span data-lang-ar>الأفكار إلى</span>
                         </span>
                     </span>
                     <span class="hero-line hero-line-accent" data-reveal>
                         <span class="hero-line-inner">
                             <span data-lang-fr>réalité<span class="hero-dot">.</span></span>
                             <span data-lang-en>reality<span class="hero-dot">.</span></span>
+                            <span data-lang-ar>واقع<span class="hero-dot">.</span></span>
                         </span>
                     </span>
                 </h1>
                 <p class="hero-sub">
                     <span data-lang-fr>Une équipe de développeurs étudiants qui construit le futur, un projet à la fois.</span>
                     <span data-lang-en>A student-driven dev team building the future, one project at a time.</span>
+                    <span data-lang-ar>فريق من المطورين الطلاب يبني المستقبل، مشروعاً تلو الآخر.</span>
                 </p>
                 <div class="hero-cta">
                     <a href="#portfolio" class="btn-magnetic" data-magnetic>
@@ -106,6 +119,7 @@
                         <span class="btn-text">
                             <span data-lang-fr>Voir nos projets</span>
                             <span data-lang-en>See Our Work</span>
+                            <span data-lang-ar>شاهد أعمالنا</span>
                         </span>
                         <span class="btn-arrow">→</span>
                     </a>
@@ -118,10 +132,12 @@
             <h2>
                 <span data-lang-fr>Développement Web</span>
                 <span data-lang-en>Web Development</span>
+                <span data-lang-ar>تطوير الويب</span>
             </h2>
             <p>
                 <span data-lang-fr>Sites modernes et applications web réactives construites avec les dernières technologies.</span>
                 <span data-lang-en>Modern, responsive websites and web apps built with cutting-edge technology.</span>
+                <span data-lang-ar>مواقع حديثة وتطبيقات ويب متجاوبة مبنية بأحدث التقنيات.</span>
             </p>
         </div>
         <div class="hero-phase hero-phase-right" id="phaseMobile">
@@ -129,10 +145,12 @@
             <h2>
                 <span data-lang-fr>Applications Mobiles</span>
                 <span data-lang-en>Mobile Apps</span>
+                <span data-lang-ar>تطبيقات الجوال</span>
             </h2>
             <p>
                 <span data-lang-fr>Applications natives et cross-platform pour iOS et Android.</span>
                 <span data-lang-en>Native and cross-platform apps for iOS and Android.</span>
+                <span data-lang-ar>تطبيقات أصلية ومتعددة المنصات لنظامي iOS و Android.</span>
             </p>
         </div>
         <div class="hero-phase hero-phase-left" id="phaseData">
@@ -140,10 +158,12 @@
             <h2>
                 <span data-lang-fr>IA & Analytique</span>
                 <span data-lang-en>AI & Analytics</span>
+                <span data-lang-ar>الذكاء الاصطناعي والتحليلات</span>
             </h2>
             <p>
                 <span data-lang-fr>Dashboards intelligents, modèles de machine learning et analyse prédictive.</span>
                 <span data-lang-en>Smart dashboards, machine learning models and predictive analytics.</span>
+                <span data-lang-ar>لوحات معلومات ذكية ونماذج تعلّم آلي وتحليلات تنبؤية.</span>
             </p>
         </div>
 
@@ -160,10 +180,12 @@
                 <span class="section-label">
                     <span data-lang-fr>À propos</span>
                     <span data-lang-en>About us</span>
+                    <span data-lang-ar>من نحن</span>
                 </span>
                 <h2 class="about-title" data-reveal-lines>
                     <span data-lang-fr>Nous sommes une équipe d'étudiants passionnés qui croit que l'innovation n'a pas d'âge.</span>
                     <span data-lang-en>We are a team of passionate students who believe innovation knows no age.</span>
+                    <span data-lang-ar>نحن فريق من الطلاب الشغوفين الذين يؤمنون بأن الابتكار لا يعرف عمراً.</span>
                 </h2>
             </div>
             <div class="about-body">
@@ -171,6 +193,7 @@
                     <p data-reveal-lines>
                         <span data-lang-fr>IDeep est une entreprise de développement fondée par des étudiants ambitieux en informatique. Des plateformes web aux dashboards alimentés par l'IA, nous livrons des solutions qui font une vraie différence.</span>
                         <span data-lang-en>IDeep is a development company founded by ambitious Computer Science students. From web platforms to AI-powered dashboards, we deliver solutions that make a real impact.</span>
+                        <span data-lang-ar>IDeep هي شركة تطوير أسسها طلاب طموحون في علوم الحاسوب. من منصات الويب إلى لوحات المعلومات المدعومة بالذكاء الاصطناعي، نقدم حلولاً تحدث فرقاً حقيقياً.</span>
                     </p>
                 </div>
                 <div class="about-stats">
@@ -179,6 +202,7 @@
                         <div class="stat-label">
                             <span data-lang-fr>Projets livrés</span>
                             <span data-lang-en>Projects delivered</span>
+                            <span data-lang-ar>مشاريع منجزة</span>
                         </div>
                     </div>
                     <div class="stat" data-anim>
@@ -186,6 +210,7 @@
                         <div class="stat-label">
                             <span data-lang-fr>Membres actifs</span>
                             <span data-lang-en>Active members</span>
+                            <span data-lang-ar>أعضاء نشطون</span>
                         </div>
                     </div>
                     <div class="stat" data-anim>
@@ -193,6 +218,7 @@
                         <div class="stat-label">
                             <span data-lang-fr>Clients satisfaits</span>
                             <span data-lang-en>Happy clients</span>
+                            <span data-lang-ar>عملاء راضون</span>
                         </div>
                     </div>
                 </div>
@@ -203,10 +229,15 @@
     <!-- ========== SERVICES ========== -->
     <section class="services" id="services">
         <div class="services-inner">
-            <span class="section-label">Services</span>
+            <span class="section-label">
+                <span data-lang-fr>Services</span>
+                <span data-lang-en>Services</span>
+                <span data-lang-ar>خدماتنا</span>
+            </span>
             <h2 class="services-heading">
                 <span data-lang-fr>Ce que nous<br>faisons de mieux</span>
                 <span data-lang-en>What we<br>do best</span>
+                <span data-lang-ar>ما نتقنه<br>أكثر</span>
             </h2>
             <div class="services-list">
                 <div class="service-row" data-anim>
@@ -215,10 +246,12 @@
                         <h3>
                             <span data-lang-fr>Développement Web</span>
                             <span data-lang-en>Web Development</span>
+                            <span data-lang-ar>تطوير الويب</span>
                         </h3>
                         <p>
                             <span data-lang-fr>Sites modernes et applications web réactives construites avec les dernières technologies.</span>
                             <span data-lang-en>Modern, responsive websites and web applications built with the latest technologies.</span>
+                            <span data-lang-ar>مواقع حديثة وتطبيقات ويب متجاوبة مبنية بأحدث التقنيات.</span>
                         </p>
                     </div>
                     <div class="service-icon"><i class="fas fa-code"></i></div>
@@ -229,10 +262,12 @@
                         <h3>
                             <span data-lang-fr>Design UI/UX</span>
                             <span data-lang-en>UI/UX Design</span>
+                            <span data-lang-ar>تصميم واجهات المستخدم</span>
                         </h3>
                         <p>
                             <span data-lang-fr>Interfaces élégantes et expériences utilisateur intuitives, pixel par pixel.</span>
                             <span data-lang-en>Elegant interfaces and intuitive user experiences, pixel by pixel.</span>
+                            <span data-lang-ar>واجهات أنيقة وتجارب مستخدم بديهية، بكسل ببكسل.</span>
                         </p>
                     </div>
                     <div class="service-icon"><i class="fas fa-palette"></i></div>
@@ -243,10 +278,12 @@
                         <h3>
                             <span data-lang-fr>IA & Data</span>
                             <span data-lang-en>AI & Data</span>
+                            <span data-lang-ar>الذكاء الاصطناعي والبيانات</span>
                         </h3>
                         <p>
                             <span data-lang-fr>Modèles de machine learning, analyse prédictive et dashboards intelligents.</span>
                             <span data-lang-en>Machine learning models, predictive analytics, and smart dashboards.</span>
+                            <span data-lang-ar>نماذج تعلّم آلي وتحليلات تنبؤية ولوحات معلومات ذكية.</span>
                         </p>
                     </div>
                     <div class="service-icon"><i class="fas fa-brain"></i></div>
@@ -257,10 +294,12 @@
                         <h3>
                             <span data-lang-fr>Applications Mobiles</span>
                             <span data-lang-en>Mobile Apps</span>
+                            <span data-lang-ar>تطبيقات الجوال</span>
                         </h3>
                         <p>
                             <span data-lang-fr>Applications natives et cross-platform pour iOS et Android.</span>
                             <span data-lang-en>Native and cross-platform apps for iOS and Android.</span>
+                            <span data-lang-ar>تطبيقات أصلية ومتعددة المنصات لنظامي iOS و Android.</span>
                         </p>
                     </div>
                     <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
@@ -277,6 +316,7 @@
                 <h2>
                     <span data-lang-fr>Travaux récents</span>
                     <span data-lang-en>Recent work</span>
+                    <span data-lang-ar>أعمالنا الأخيرة</span>
                 </h2>
             </div>
             <div class="portfolio-grid">
@@ -290,6 +330,7 @@
                         <p>
                             <span data-lang-fr>Dashboard interactif pour la segmentation client et l'analyse des comportements voyageurs.</span>
                             <span data-lang-en>Interactive dashboard for customer segmentation and traveler behavior analytics.</span>
+                            <span data-lang-ar>لوحة معلومات تفاعلية لتقسيم العملاء وتحليل سلوك المسافرين.</span>
                         </p>
                     </div>
                 </article>
@@ -303,6 +344,7 @@
                         <p>
                             <span data-lang-fr>Application web de suivi nutritionnel avec plans de repas personnalisés.</span>
                             <span data-lang-en>Nutrition tracking web app with personalized meal plans.</span>
+                            <span data-lang-ar>تطبيق ويب لمتابعة التغذية مع خطط وجبات مخصصة.</span>
                         </p>
                     </div>
                 </article>
@@ -316,6 +358,7 @@
                         <p>
                             <span data-lang-fr>Plateforme d'accessibilité vocale pour naviguer le web via commandes vocales.</span>
                             <span data-lang-en>Voice-powered accessibility platform for navigating the web through voice commands.</span>
+                            <span data-lang-ar>منصة إمكانية الوصول الصوتية للتنقل في الويب عبر الأوامر الصوتية.</span>
                         </p>
                     </div>
                 </article>
@@ -329,6 +372,7 @@
                         <p>
                             <span data-lang-fr>Plateforme éducative propulsée par l'IA avec quiz automatiques et suivi de progression.</span>
                             <span data-lang-en>AI-powered education platform with auto-generated quizzes and progress tracking.</span>
+                            <span data-lang-ar>منصة تعليمية مدعومة بالذكاء الاصطناعي مع اختبارات آلية وتتبع التقدم.</span>
                         </p>
                     </div>
                 </article>
@@ -343,65 +387,74 @@
                 <span class="section-label">
                     <span data-lang-fr>L'équipe</span>
                     <span data-lang-en>The team</span>
+                    <span data-lang-ar>الفريق</span>
                 </span>
                 <h2>
                     <span data-lang-fr>Les visages<br>derrière le code</span>
                     <span data-lang-en>The faces<br>behind the code</span>
+                    <span data-lang-ar>الوجوه<br>خلف الكود</span>
                 </h2>
             </div>
-            <div class="team-grid">
-                <div class="member" data-anim>
-                    <div class="member-img">
-                        <img src="members/ahmed ayadi.png" alt="Ahmed Ayadi" loading="lazy">
-                    </div>
-                    <div class="member-info">
-                        <h3>Ahmed Ayadi</h3>
-                        <span>Co-Founder & Developer</span>
-                    </div>
+
+            <!-- Group photo with zoom animation -->
+            <div class="team-showcase">
+                <div class="team-group-photo">
+                    <img src="ideep equipe.jpeg" alt="IDeep Team" loading="lazy">
                 </div>
-                <div class="member" data-anim>
-                    <div class="member-img">
-                        <img src="members/insaf makhloufi.png" alt="Insaf Makhloufi" loading="lazy">
+                <div class="team-members-row">
+                    <div class="team-member-card" data-member="0" data-anim>
+                        <div class="member-zoom-circle">
+                            <div class="member-zoom-img" style="background-image: url('ideep equipe.jpeg'); background-position: 5% 15%; background-size: 600%;"></div>
+                        </div>
+                        <div class="member-card-info">
+                            <h3>Insaf Makhloufi</h3>
+                            <span>UI/UX Designer</span>
+                        </div>
                     </div>
-                    <div class="member-info">
-                        <h3>Insaf Makhloufi</h3>
-                        <span>UI/UX Designer</span>
+                    <div class="team-member-card" data-member="1" data-anim>
+                        <div class="member-zoom-circle">
+                            <div class="member-zoom-img" style="background-image: url('ideep equipe.jpeg'); background-position: 24% 15%; background-size: 600%;"></div>
+                        </div>
+                        <div class="member-card-info">
+                            <h3>Ahmed Ayadi</h3>
+                            <span>Co-Founder & Developer</span>
+                        </div>
                     </div>
-                </div>
-                <div class="member" data-anim>
-                    <div class="member-img">
-                        <img src="members/jihed khlifi.png" alt="Jihed Khlifi" loading="lazy">
+                    <div class="team-member-card" data-member="2" data-anim>
+                        <div class="member-zoom-circle">
+                            <div class="member-zoom-img" style="background-image: url('ideep equipe.jpeg'); background-position: 42% 15%; background-size: 600%;"></div>
+                        </div>
+                        <div class="member-card-info">
+                            <h3>Jihed Khlifi</h3>
+                            <span>Full-Stack Developer</span>
+                        </div>
                     </div>
-                    <div class="member-info">
-                        <h3>Jihed Khlifi</h3>
-                        <span>Full-Stack Developer</span>
+                    <div class="team-member-card" data-member="3" data-anim>
+                        <div class="member-zoom-circle">
+                            <div class="member-zoom-img" style="background-image: url('ideep equipe.jpeg'); background-position: 58% 15%; background-size: 600%;"></div>
+                        </div>
+                        <div class="member-card-info">
+                            <h3>Malek Tirellil</h3>
+                            <span>Project Manager</span>
+                        </div>
                     </div>
-                </div>
-                <div class="member" data-anim>
-                    <div class="member-img">
-                        <img src="members/malek tirellil.jpg" alt="Malek Tirellil" loading="lazy">
+                    <div class="team-member-card" data-member="4" data-anim>
+                        <div class="member-zoom-circle">
+                            <div class="member-zoom-img" style="background-image: url('ideep equipe.jpeg'); background-position: 76% 15%; background-size: 600%;"></div>
+                        </div>
+                        <div class="member-card-info">
+                            <h3>Yassmine Nouisser</h3>
+                            <span>Frontend Developer</span>
+                        </div>
                     </div>
-                    <div class="member-info">
-                        <h3>Malek Tirellil</h3>
-                        <span>Project Manager</span>
-                    </div>
-                </div>
-                <div class="member" data-anim>
-                    <div class="member-img">
-                        <img src="members/yassmine nouisser.jpeg" alt="Yassmine Nouisser" loading="lazy">
-                    </div>
-                    <div class="member-info">
-                        <h3>Yassmine Nouisser</h3>
-                        <span>Frontend Developer</span>
-                    </div>
-                </div>
-                <div class="member" data-anim>
-                    <div class="member-img">
-                        <img src="members/youssef jouini.jpg" alt="Youssef Jouini" loading="lazy">
-                    </div>
-                    <div class="member-info">
-                        <h3>Youssef Jouini</h3>
-                        <span>Backend Developer</span>
+                    <div class="team-member-card" data-member="5" data-anim>
+                        <div class="member-zoom-circle">
+                            <div class="member-zoom-img" style="background-image: url('ideep equipe.jpeg'); background-position: 95% 15%; background-size: 600%;"></div>
+                        </div>
+                        <div class="member-card-info">
+                            <h3>Youssef Jouini</h3>
+                            <span>Backend Developer</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -417,12 +470,14 @@
                         <span class="contact-line-inner">
                             <span data-lang-fr>Travaillons</span>
                             <span data-lang-en>Let's work</span>
+                            <span data-lang-ar>لنعمل</span>
                         </span>
                     </span>
                     <span class="contact-line" data-reveal>
                         <span class="contact-line-inner">
                             <span data-lang-fr>ensemble<span class="hero-dot">.</span></span>
                             <span data-lang-en>together<span class="hero-dot">.</span></span>
+                            <span data-lang-ar>معاً<span class="hero-dot">.</span></span>
                         </span>
                     </span>
                 </h2>
@@ -430,6 +485,7 @@
             <p class="contact-sub" data-anim>
                 <span data-lang-fr>Vous avez un projet en tête ? Nous serions ravis d'en discuter.</span>
                 <span data-lang-en>Have a project in mind? We'd love to hear from you.</span>
+                <span data-lang-ar>لديك مشروع في ذهنك؟ يسعدنا أن نسمع منك.</span>
             </p>
             <a href="mailto:contact@ideep.tn" class="contact-email" data-anim data-magnetic>contact@ideep.tn</a>
             <div class="contact-socials" data-anim>
@@ -451,6 +507,7 @@
                 <span>
                     <span data-lang-fr>Fait avec passion par des étudiants</span>
                     <span data-lang-en>Made with passion by students</span>
+                    <span data-lang-ar>صنع بشغف من قبل طلاب</span>
                 </span>
             </div>
         </div>
