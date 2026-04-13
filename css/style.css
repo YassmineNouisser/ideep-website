@@ -264,7 +264,7 @@ img { max-width: 100%; display: block; }
 }
 
 .nav-logo { display: flex; align-items: center; }
-.nav-logo-img { height: 32px; width: auto; object-fit: contain; }
+.nav-logo-img { height: 26px; width: auto; object-fit: contain; }
 
 .nav-links {
     display: flex;
@@ -1853,6 +1853,14 @@ img { max-width: 100%; display: block; }
     .footer-brand { grid-column: 1 / -1; max-width: 100%; }
 }
 
+/* Loader logo scales down on mobile */
+@media (max-width: 640px) {
+    .loader-inner { width: 200px; }
+    .loader-logo { width: 170px; }
+    .loader-logo img { width: 170px; }
+    .footer-cta { width: 100%; justify-content: center; }
+}
+
 @media (max-width: 640px) {
     .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
     .footer-bottom {
@@ -1949,6 +1957,41 @@ img { max-width: 100%; display: block; }
 }
 .featured-card:nth-child(even) .featured-card-visual { order: 2; }
 .featured-card:nth-child(even) .featured-card-content { order: 1; }
+
+/* Vertical layout: visual on top, content below (stacked full-width) */
+.featured-card.featured-card-vertical,
+.featured-stack .featured-card.featured-card-vertical:nth-child(even) {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem;
+    padding: 2.5rem;
+}
+.featured-card-vertical .featured-card-visual {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    aspect-ratio: 4 / 3;
+    order: 1 !important;
+}
+.featured-card-vertical .featured-card-content {
+    order: 2 !important;
+    align-items: center;
+    text-align: center;
+}
+.lang-ar .featured-card-vertical .featured-card-content {
+    align-items: center;
+    text-align: center;
+}
+.featured-card-vertical .featured-card-actions {
+    justify-content: center;
+}
+.featured-card-vertical .featured-card-content {
+    align-items: flex-start;
+    text-align: left;
+}
+.lang-ar .featured-card-vertical .featured-card-content {
+    align-items: flex-end;
+    text-align: right;
+}
 
 .featured-card-visual {
     position: relative;
@@ -2110,6 +2153,43 @@ img { max-width: 100%; display: block; }
 .featured-card-visual-trio + .featured-card-content,
 .featured-card:hover .featured-card-visual-trio { transform: none; }
 .featured-card-visual-trio .featured-card-img { display: none; }
+
+/* ===== TRIO LANDSCAPE — horizontal tablet frames (16:10) for website screenshots ===== */
+.featured-card-visual-trio-landscape .trio-img {
+    aspect-ratio: 16 / 10;
+    height: auto;
+    width: 70%;
+    border-radius: 14px;
+}
+.featured-card-visual-trio-landscape .trio-center {
+    width: 78%;
+    height: auto;
+    transform: translate(0, 0) scale(1);
+}
+.featured-card-visual-trio-landscape .trio-left {
+    width: 64%;
+    height: auto;
+    transform: translate(-44%, 8%) rotate(-6deg) scale(0.9);
+}
+.featured-card-visual-trio-landscape .trio-right {
+    width: 64%;
+    height: auto;
+    transform: translate(44%, 8%) rotate(6deg) scale(0.9);
+}
+.featured-card:hover .featured-card-visual-trio-landscape .trio-center {
+    transform: translate(0, -3%) scale(1.02);
+}
+.featured-card:hover .featured-card-visual-trio-landscape .trio-left {
+    transform: translate(-50%, 4%) rotate(-8deg) scale(0.92);
+    filter: brightness(0.92) saturate(1);
+}
+.featured-card:hover .featured-card-visual-trio-landscape .trio-right {
+    transform: translate(50%, 4%) rotate(8deg) scale(0.92);
+    filter: brightness(0.92) saturate(1);
+}
+.featured-card-visual-trio-landscape .trio-img img {
+    object-position: top center;
+}
 
 
 /* ===== DESKTOP STACK (3 landscape screens, front center, layered with perspective) ===== */
@@ -2953,6 +3033,13 @@ body.modal-open { overflow: hidden; }
     .trio-right { height: 70%; transform: translate(52%, 4%) rotate(8deg) scale(0.88); }
     .featured-card:hover .trio-left { transform: translate(-58%, 0) rotate(-10deg) scale(0.9); }
     .featured-card:hover .trio-right { transform: translate(58%, 0) rotate(10deg) scale(0.9); }
+
+    /* Landscape trio mobile overrides */
+    .featured-card-visual-trio-landscape .trio-center { width: 86%; height: auto; }
+    .featured-card-visual-trio-landscape .trio-left { width: 70%; height: auto; transform: translate(-38%, 12%) rotate(-5deg) scale(0.88); }
+    .featured-card-visual-trio-landscape .trio-right { width: 70%; height: auto; transform: translate(38%, 12%) rotate(5deg) scale(0.88); }
+    .featured-card:hover .featured-card-visual-trio-landscape .trio-left { transform: translate(-44%, 8%) rotate(-7deg) scale(0.9); }
+    .featured-card:hover .featured-card-visual-trio-landscape .trio-right { transform: translate(44%, 8%) rotate(7deg) scale(0.9); }
     .featured-card-content { gap: 1rem; }
     .featured-card-title { font-size: clamp(1.6rem, 7vw, 2.4rem); }
     .featured-card-desc { font-size: 0.92rem; }
@@ -3045,7 +3132,7 @@ body.modal-open { overflow: hidden; }
     .team-cinema-intro {
         position: absolute;
         left: 50%;
-        top: calc(3vh + 63vw + 1.5rem);
+        top: calc(3vh + 63vw + 3.5rem);
         bottom: auto;
         transform: translateX(-50%) translateY(var(--intro-y, 0px));
         text-align: center;

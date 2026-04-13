@@ -805,7 +805,7 @@
     phone.add(camBump);
 
     phone.position.set(-5, -3, 0);
-    phone.scale.setScalar(isMobile ? 3.4 : 5.2);
+    phone.scale.setScalar(isMobile ? 4.0 : 5.2);
     scene.add(phone);
 
     // ========================================
@@ -841,7 +841,7 @@
     tabletCam.position.set(0, TH / 2 - 0.015, TT / 2 + 0.001); tablet.add(tabletCam);
 
     tablet.position.set(6, 3, 1);
-    tablet.scale.setScalar(isMobile ? 2.8 : 4.2);
+    tablet.scale.setScalar(isMobile ? 3.4 : 4.2);
     scene.add(tablet);
 
     // ========================================
@@ -1016,7 +1016,7 @@
 
     // ---- PHASE 3 (26-42): LAPTOP SLIDES AWAY + PHONE & TABLET ENTER TOGETHER ----
     heroTl.to(scrollState, { laptopX: isMobile ? 1.4 : 3.5, duration: 12, ease: 'power2.inOut' }, 26);
-    heroTl.to(scrollState, { cameraZ: isMobile ? 11.0 : 9.0, cameraX: isMobile ? 0 : -0.5, cameraY: 0.8, duration: 14, ease: 'power2.out' }, 26);
+    heroTl.to(scrollState, { cameraZ: isMobile ? 9.0 : 9.0, cameraX: isMobile ? 0 : -0.5, cameraY: 0.2, duration: 14, ease: 'power2.out' }, 26);
     heroTl.to(scrollState, { rotationY: Math.PI * 0.8, duration: 14, ease: 'power2.inOut' }, 26);
     // Phone + Tablet simultaneous arc entrance
     heroTl.to(scrollState, { phoneArc: 1, duration: 12, ease: 'power3.out' }, 30);
@@ -1119,7 +1119,7 @@
         var arcT = scrollState.phoneArc;
         if (arcT > 0.01) {
             var sX = -7, sY = -4, cX = -2.8, cY = 1.4;
-            var eX = isMobile ? -1.1 : -1.8, eY = isMobile ? -0.1 : 0.2;
+            var eX = isMobile ? -0.9 : -1.8, eY = isMobile ? -0.8 : 0.2;
             phone.position.x = (1 - arcT) * (1 - arcT) * sX + 2 * (1 - arcT) * arcT * cX + arcT * arcT * eX;
             phone.position.y = (1 - arcT) * (1 - arcT) * sY + 2 * (1 - arcT) * arcT * cY + arcT * arcT * eY;
             phone.position.y += Math.sin(time * 0.3 + 1) * 0.015;
@@ -1139,7 +1139,7 @@
         var tabT = scrollState.tabletArc;
         if (tabT > 0.01) {
             var tsX = 7, tsY = 3.5, tcX = 2.5, tcY = 1.6;
-            var teX = isMobile ? 1.0 : 1.8, teY = isMobile ? 1.2 : 0.3;
+            var teX = isMobile ? 0 : 1.8, teY = isMobile ? 1.0 : 0.3;
             tablet.position.x = (1 - tabT) * (1 - tabT) * tsX + 2 * (1 - tabT) * tabT * tcX + tabT * tabT * teX;
             tablet.position.y = (1 - tabT) * (1 - tabT) * tsY + 2 * (1 - tabT) * tabT * tcY + tabT * tabT * teY;
             tablet.position.y += Math.sin(time * 0.25 + 2) * 0.012;
