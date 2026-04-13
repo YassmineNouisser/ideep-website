@@ -143,7 +143,7 @@
 
     // Scrollable content render functions
     var laptopContentReady = false;
-    var lastLaptopScroll = -1, lastPhoneScroll = -1, lastTabletScroll = -1;
+    var lastLaptopScroll = -1;
 
     function renderLaptopScreen(scrollOffset) {
         if (!window.ideepContent || !laptopContentReady) return;
@@ -164,7 +164,7 @@
         screenTexture.needsUpdate = true;
     }
 
-    function renderPhoneScreen(scrollOffset) {
+    function renderPhoneScreen(scrollOffset, timeParam) {
         if (!window.ideepContent) return;
         var pc = window.ideepContent.phone;
         var ctx = phoneCtx, w = 512, h = 1024, stH = 34, tabH = 80;
@@ -183,8 +183,14 @@
         ctx.beginPath(); ctx.moveTo(0, h - tabH); ctx.lineTo(w, h - tabH); ctx.stroke();
         var icons = ['\u2302', '\u25CB', '\u002B', '\u2606'];
         var labels = ['Accueil', 'Stats', 'Ajouter', 'Profil'];
+        // Pulse the active tab
+        var pulse = 0.7 + Math.sin((timeParam || 0) * 3) * 0.3;
         for (var i = 0; i < 4; i++) {
             var x = i * (w / 4) + w / 8;
+            if (i === 0) {
+                ctx.fillStyle = 'rgba(52,199,89,' + (0.15 * pulse) + ')';
+                ctx.beginPath(); ctx.arc(x, h - 48, 20, 0, Math.PI * 2); ctx.fill();
+            }
             ctx.fillStyle = i === 0 ? '#34C759' : '#5a6580';
             ctx.font = '20px sans-serif'; ctx.textAlign = 'center';
             ctx.fillText(icons[i], x, h - 48);
@@ -193,10 +199,24 @@
         }
         ctx.textAlign = 'left';
         ctx.fillStyle = 'rgba(255,255,255,0.25)'; ctx.beginPath(); ctx.roundRect(w / 2 - 50, h - 8, 100, 4, 2); ctx.fill();
+
+        // Luxury diagonal shine sweep
+        if (timeParam !== undefined) {
+            var sweepPeriod = 4.5;
+            var sweepT = ((timeParam % sweepPeriod) / sweepPeriod);
+            var sweepX = -w * 0.4 + sweepT * (w + w * 0.8);
+            var shineGrad = ctx.createLinearGradient(sweepX - 60, 0, sweepX + 60, h);
+            shineGrad.addColorStop(0, 'rgba(255,255,255,0)');
+            shineGrad.addColorStop(0.5, 'rgba(255,255,255,0.09)');
+            shineGrad.addColorStop(1, 'rgba(255,255,255,0)');
+            ctx.fillStyle = shineGrad;
+            ctx.fillRect(0, stH, w, h - stH - tabH);
+        }
+
         phoneTexture.needsUpdate = true;
     }
 
-    function renderTabletScreen(scrollOffset) {
+    function renderTabletScreen(scrollOffset, timeParam) {
         if (!window.ideepContent) return;
         var tc = window.ideepContent.tablet;
         var ctx = tabletCtx, w = 1024, h = 768, sbW = 72, hdrH = 56;
@@ -232,6 +252,25 @@
         ctx.fillStyle = '#5a6580'; ctx.font = '11px sans-serif'; ctx.fillText('\uD83D\uDD0D  Rechercher...', w - 288, 33);
         ctx.fillStyle = 'rgba(45,156,219,0.2)'; ctx.beginPath(); ctx.arc(w - 50, 28, 16, 0, 6.28); ctx.fill();
         ctx.fillStyle = '#fff'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('A', w - 50, 33); ctx.textAlign = 'left';
+
+        // Live notification dot (pulse)
+        if (timeParam !== undefined) {
+            var notifPulse = 0.5 + Math.sin(timeParam * 4) * 0.5;
+            ctx.fillStyle = 'rgba(255,59,48,' + notifPulse + ')';
+            ctx.beginPath(); ctx.arc(w - 40, 18, 4, 0, Math.PI * 2); ctx.fill();
+
+            // Luxury diagonal shine sweep across main area
+            var sweepPeriod = 5.5;
+            var sweepT = ((timeParam % sweepPeriod) / sweepPeriod);
+            var sweepX = sbW - mainW * 0.3 + sweepT * (mainW + mainW * 0.6);
+            var shineGrad = ctx.createLinearGradient(sweepX - 80, 0, sweepX + 80, h);
+            shineGrad.addColorStop(0, 'rgba(255,255,255,0)');
+            shineGrad.addColorStop(0.5, 'rgba(255,255,255,0.07)');
+            shineGrad.addColorStop(1, 'rgba(255,255,255,0)');
+            ctx.fillStyle = shineGrad;
+            ctx.fillRect(sbW, hdrH, mainW, mainH);
+        }
+
         tabletTexture.needsUpdate = true;
     }
 
@@ -765,8 +804,8 @@
     camBump.rotation.x = Math.PI / 2; camBump.position.set(-PW / 2 + 0.06, PH / 2 - 0.06, -PT / 2 - 0.004);
     phone.add(camBump);
 
-    phone.position.set(4, -3, 0);
-    phone.scale.setScalar(isMobile ? 1.6 : 2.2);
+    phone.position.set(-5, -3, 0);
+    phone.scale.setScalar(isMobile ? 3.4 : 5.2);
     scene.add(phone);
 
     // ========================================
@@ -801,8 +840,8 @@
     var tabletCam = new THREE.Mesh(new THREE.CircleGeometry(0.006, 16), new THREE.MeshBasicMaterial({ color: 0x1a1a2e }));
     tabletCam.position.set(0, TH / 2 - 0.015, TT / 2 + 0.001); tablet.add(tabletCam);
 
-    tablet.position.set(5, -4, 1);
-    tablet.scale.setScalar(isMobile ? 1.4 : 2.0);
+    tablet.position.set(6, 3, 1);
+    tablet.scale.setScalar(isMobile ? 2.8 : 4.2);
     scene.add(tablet);
 
     // ========================================
@@ -975,54 +1014,45 @@
     // Laptop screen scrolls during phase 2-3
     heroTl.to(scrollState, { screenScroll: 0.5, duration: 20, ease: 'none' }, 16);
 
-    // ---- PHASE 3 (26-42): LAPTOP SLIDES RIGHT + PHONE ENTERS ----
-    heroTl.to(scrollState, { laptopX: isMobile ? 0.3 : 1.6, duration: 10, ease: 'power2.inOut' }, 26);
-    heroTl.to(scrollState, { cameraZ: isMobile ? 6.8 : 5.5, cameraX: isMobile ? 0 : -0.2, cameraY: 0.8, duration: 12, ease: 'power2.out' }, 26);
-    heroTl.to(scrollState, { rotationY: Math.PI * 0.6, duration: 14, ease: 'power2.inOut' }, 26);
-    // Phone arc entrance (delayed to avoid overlapping laptop)
+    // ---- PHASE 3 (26-42): LAPTOP SLIDES AWAY + PHONE & TABLET ENTER TOGETHER ----
+    heroTl.to(scrollState, { laptopX: isMobile ? 1.4 : 3.5, duration: 12, ease: 'power2.inOut' }, 26);
+    heroTl.to(scrollState, { cameraZ: isMobile ? 11.0 : 9.0, cameraX: isMobile ? 0 : -0.5, cameraY: 0.8, duration: 14, ease: 'power2.out' }, 26);
+    heroTl.to(scrollState, { rotationY: Math.PI * 0.8, duration: 14, ease: 'power2.inOut' }, 26);
+    // Phone + Tablet simultaneous arc entrance
     heroTl.to(scrollState, { phoneArc: 1, duration: 12, ease: 'power3.out' }, 30);
-    // Phase text: Mobile Apps
+    heroTl.to(scrollState, { tabletArc: 1, duration: 12, ease: 'power3.out' }, 30);
+    // Phase texts: Mobile + Data staggered but overlapping
     heroTl.to('#phaseMobile', { opacity: 1, y: 0, duration: 4, ease: 'power2.out' }, 32);
-    heroTl.to('#phaseMobile', { opacity: 0, duration: 3, ease: 'power2.in' }, 40);
-    // Laptop continues scrolling + phone scrolls
+    heroTl.to('#phaseMobile', { opacity: 0, duration: 3, ease: 'power2.in' }, 38);
+    heroTl.to('#phaseData', { opacity: 1, y: 0, duration: 4, ease: 'power2.out' }, 36);
+    heroTl.to('#phaseData', { opacity: 0, duration: 3, ease: 'power2.in' }, 42);
+    // Laptop continues scrolling + phone + tablet scroll
     heroTl.to(scrollState, { screenScroll: 1, duration: 16, ease: 'none' }, 26);
-    heroTl.to(scrollState, { phoneScroll: 0.7, duration: 14, ease: 'none' }, 30);
+    heroTl.to(scrollState, { phoneScroll: 1, duration: 14, ease: 'none' }, 30);
+    heroTl.to(scrollState, { tabletScroll: 0.8, duration: 14, ease: 'none' }, 32);
 
-    // ---- PHASE 4 (42-56): TABLET ENTERS — LAPTOP MOVES AWAY ----
-    heroTl.to(scrollState, { laptopX: isMobile ? 1.4 : 3.5, duration: 10, ease: 'power2.inOut' }, 42);
-    heroTl.to(scrollState, { cameraZ: isMobile ? 9.0 : 7.0, cameraY: 0.8, cameraX: isMobile ? 0 : -0.5, duration: 12, ease: 'power2.inOut' }, 42);
-    heroTl.to(scrollState, { rotationY: Math.PI * 0.8, duration: 14, ease: 'power2.inOut' }, 42);
-    // Tablet arc entrance
-    heroTl.to(scrollState, { tabletArc: 1, duration: 12, ease: 'power3.out' }, 44);
-    // Phase text: AI & Analytics
-    heroTl.to('#phaseData', { opacity: 1, y: 0, duration: 4, ease: 'power2.out' }, 48);
-    heroTl.to('#phaseData', { opacity: 0, duration: 3, ease: 'power2.in' }, 55);
-    // Phone finishes + tablet scrolls
-    heroTl.to(scrollState, { phoneScroll: 1, duration: 12, ease: 'none' }, 42);
-    heroTl.to(scrollState, { tabletScroll: 0.8, duration: 14, ease: 'none' }, 46);
-
-    // ---- PHASE 5 (56-72): ALL DEVICES SHOWCASE + HERO TEXT ----
-    heroTl.to(scrollState, { cameraZ: isMobile ? 10.5 : 8.0, cameraY: 0.6, duration: 14, ease: 'power2.inOut' }, 56);
-    heroTl.to(scrollState, { rotationY: Math.PI * 1.2, duration: 16, ease: 'none' }, 56);
+    // ---- PHASE 4 (42-58): ALL DEVICES SHOWCASE + HERO TEXT ----
+    heroTl.to(scrollState, { cameraZ: isMobile ? 10.5 : 8.0, cameraY: 0.6, duration: 14, ease: 'power2.inOut' }, 42);
+    heroTl.to(scrollState, { rotationY: Math.PI * 1.2, duration: 16, ease: 'none' }, 42);
     // Hero text appears
-    heroTl.to('.hero-tag', { opacity: 1, duration: 4 }, 60);
-    heroTl.to('.hero-line-inner', { y: '0%', duration: 8, stagger: 2, ease: 'power3.out' }, 62);
-    heroTl.to('.hero-sub', { opacity: 1, duration: 5 }, 68);
-    heroTl.to('.btn-magnetic', { opacity: 1, duration: 5 }, 70);
+    heroTl.to('.hero-tag', { opacity: 1, duration: 4 }, 46);
+    heroTl.to('.hero-line-inner', { y: '0%', duration: 8, stagger: 2, ease: 'power3.out' }, 48);
+    heroTl.to('.hero-sub', { opacity: 1, duration: 5 }, 54);
+    heroTl.to('.btn-magnetic', { opacity: 1, duration: 5 }, 56);
 
-    // ---- PHASE 6 (72-88): HERO TEXT DISPLAY + GENTLE ORBIT ----
-    heroTl.to(scrollState, { rotationY: Math.PI * 1.6, duration: 16, ease: 'none' }, 72);
-    heroTl.to(scrollState, { cameraZ: 6.5, cameraY: 0.4, duration: 16, ease: 'power1.inOut' }, 72);
+    // ---- PHASE 5 (58-74): HERO TEXT DISPLAY + GENTLE ORBIT ----
+    heroTl.to(scrollState, { rotationY: Math.PI * 1.6, duration: 16, ease: 'none' }, 58);
+    heroTl.to(scrollState, { cameraZ: 6.5, cameraY: 0.4, duration: 16, ease: 'power1.inOut' }, 58);
 
-    // ---- PHASE 7 (88-100): EXIT ----
-    heroTl.to('.hero-tag', { opacity: 0, duration: 3 }, 88);
-    heroTl.to('.hero-line-inner', { y: '110%', duration: 5, stagger: 1, ease: 'power2.in' }, 88);
-    heroTl.to('.hero-sub', { opacity: 0, duration: 3 }, 89);
-    heroTl.to('.btn-magnetic', { opacity: 0, duration: 3 }, 89);
-    heroTl.to(scrollState, { laptopScale: isMobile ? 0.3 : 0.5, laptopX: 3.5, duration: 10, ease: 'power2.in' }, 90);
-    heroTl.to(scrollState, { phoneArc: 0, duration: 10, ease: 'power2.in' }, 91);
-    heroTl.to(scrollState, { tabletArc: 0, duration: 10, ease: 'power2.in' }, 91);
-    heroTl.to(screenLight, { intensity: 0, duration: 8 }, 91);
+    // ---- PHASE 6 (74-86): EXIT ----
+    heroTl.to('.hero-tag', { opacity: 0, duration: 3 }, 74);
+    heroTl.to('.hero-line-inner', { y: '110%', duration: 5, stagger: 1, ease: 'power2.in' }, 74);
+    heroTl.to('.hero-sub', { opacity: 0, duration: 3 }, 75);
+    heroTl.to('.btn-magnetic', { opacity: 0, duration: 3 }, 75);
+    heroTl.to(scrollState, { laptopScale: isMobile ? 0.3 : 0.5, laptopX: 3.5, duration: 10, ease: 'power2.in' }, 76);
+    heroTl.to(scrollState, { phoneArc: 0, duration: 10, ease: 'power2.in' }, 77);
+    heroTl.to(scrollState, { tabletArc: 0, duration: 10, ease: 'power2.in' }, 77);
+    heroTl.to(screenLight, { intensity: 0, duration: 8 }, 77);
     // Scroll indicator visibility is controlled by main.js (visible at load, fades on scroll)
 
     // ========================================
@@ -1085,11 +1115,11 @@
         lidGroup.rotation.x = scrollState.lidAngle;
 
 
-        // ---- PHONE ARC TRAJECTORY ----
+        // ---- PHONE ARC TRAJECTORY (enters from LEFT, meets at center) ----
         var arcT = scrollState.phoneArc;
         if (arcT > 0.01) {
-            var sX = 5, sY = -4, cX = -0.5, cY = 1.0;
-            var eX = isMobile ? -1.0 : -1.8, eY = isMobile ? -0.2 : 0.4;
+            var sX = -7, sY = -4, cX = -2.8, cY = 1.4;
+            var eX = isMobile ? -1.1 : -1.8, eY = isMobile ? -0.1 : 0.2;
             phone.position.x = (1 - arcT) * (1 - arcT) * sX + 2 * (1 - arcT) * arcT * cX + arcT * arcT * eX;
             phone.position.y = (1 - arcT) * (1 - arcT) * sY + 2 * (1 - arcT) * arcT * cY + arcT * arcT * eY;
             phone.position.y += Math.sin(time * 0.3 + 1) * 0.015;
@@ -1100,16 +1130,16 @@
             phone.scale.setScalar(phScale);
             phone.visible = true;
         } else {
-            phone.position.set(4, -3, 0);
+            phone.position.set(-5, -3, 0);
             phone.scale.setScalar(0);
             phone.visible = false;
         }
 
-        // ---- TABLET ARC TRAJECTORY ----
+        // ---- TABLET ARC TRAJECTORY (enters from RIGHT, meets at center) ----
         var tabT = scrollState.tabletArc;
         if (tabT > 0.01) {
-            var tsX = 4, tsY = 3.0, tcX = -1, tcY = 1.2;
-            var teX = isMobile ? -0.3 : -0.8, teY = isMobile ? 1.2 : 0.5;
+            var tsX = 7, tsY = 3.5, tcX = 2.5, tcY = 1.6;
+            var teX = isMobile ? 1.0 : 1.8, teY = isMobile ? 1.2 : 0.3;
             tablet.position.x = (1 - tabT) * (1 - tabT) * tsX + 2 * (1 - tabT) * tabT * tcX + tabT * tabT * teX;
             tablet.position.y = (1 - tabT) * (1 - tabT) * tsY + 2 * (1 - tabT) * tabT * tcY + tabT * tabT * teY;
             tablet.position.y += Math.sin(time * 0.25 + 2) * 0.012;
@@ -1163,13 +1193,11 @@
             renderLaptopScreen(scrollState.screenScroll);
             lastLaptopScroll = scrollState.screenScroll;
         }
-        if (scrollState.phoneArc > 0.01 && scrollState.phoneScroll !== lastPhoneScroll) {
-            renderPhoneScreen(scrollState.phoneScroll);
-            lastPhoneScroll = scrollState.phoneScroll;
+        if (scrollState.phoneArc > 0.01) {
+            renderPhoneScreen(scrollState.phoneScroll, time);
         }
-        if (scrollState.tabletArc > 0.01 && scrollState.tabletScroll !== lastTabletScroll) {
-            renderTabletScreen(scrollState.tabletScroll);
-            lastTabletScroll = scrollState.tabletScroll;
+        if (scrollState.tabletArc > 0.01) {
+            renderTabletScreen(scrollState.tabletScroll, time);
         }
 
         // Particles
