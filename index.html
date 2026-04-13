@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IDeep — We Build Digital Experiences</title>
-    <meta name="description" content="IDeep is a student-driven development company building innovative digital solutions.">
+    <title>IDeep — Digital Studio · Web, Mobile, AI</title>
+    <meta name="description" content="IDeep is a digital studio crafting premium websites, mobile apps and AI-powered products for ambitious brands.">
     <link rel="icon" href="logo ideep.png" type="image/png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=20260413g">
 </head>
 <body>
 
@@ -22,7 +22,7 @@
     <div class="loader" id="loader">
         <div class="loader-inner">
             <div class="loader-logo">
-                <img src="logo ideep.png" alt="IDeep">
+                <img src="logo-ideep-transparent.png" alt="IDeep">
             </div>
             <div class="loader-line"><div class="loader-line-fill" id="loaderLine"></div></div>
         </div>
@@ -31,7 +31,7 @@
     <!-- Navigation -->
     <nav class="nav" id="navbar">
         <a href="#hero" class="nav-logo">
-            <img src="logo ideep.png" alt="IDeep" class="nav-logo-img">
+            <img src="logo-ideep-transparent.png" alt="IDeep" class="nav-logo-img">
         </a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#about">
@@ -109,9 +109,9 @@
                     </span>
                 </h1>
                 <p class="hero-sub">
-                    <span data-lang-fr>Une équipe de développeurs étudiants qui construit le futur, un projet à la fois.</span>
-                    <span data-lang-en>A student-driven dev team building the future, one project at a time.</span>
-                    <span data-lang-ar>فريق من المطورين الطلاب يبني المستقبل، مشروعاً تلو الآخر.</span>
+                    <span data-lang-fr>Studio de développement digital. Nous concevons et livrons des produits web, mobiles et IA que les utilisateurs adorent.</span>
+                    <span data-lang-en>Digital development studio. We design and ship web, mobile and AI products users love.</span>
+                    <span data-lang-ar>استوديو تطوير رقمي. نصمم ونطلق منتجات ويب وجوال وذكاء اصطناعي يحبها المستخدمون.</span>
                 </p>
                 <div class="hero-cta">
                     <a href="#portfolio" class="btn-magnetic" data-magnetic>
@@ -167,11 +167,21 @@
             </p>
         </div>
 
-        <div class="hero-scroll-indicator">
-            <span>Scroll</span>
-            <div class="scroll-line"></div>
+        <div class="hero-scroll-indicator" id="scrollIndicator">
+            <div class="scroll-mouse"><div class="scroll-mouse-dot"></div></div>
+            <span class="scroll-label">
+                <span data-lang-fr>Faites défiler</span>
+                <span data-lang-en>Scroll to explore</span>
+                <span data-lang-ar>مرّر للاستكشاف</span>
+            </span>
+            <div class="scroll-chevrons">
+                <span></span><span></span><span></span>
+            </div>
         </div>
     </section>
+
+    <!-- Top scroll progress bar -->
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
 
     <!-- ========== ABOUT ========== -->
     <section class="about" id="about">
@@ -183,44 +193,18 @@
                     <span data-lang-ar>من نحن</span>
                 </span>
                 <h2 class="about-title" data-reveal-lines>
-                    <span data-lang-fr>Nous sommes une équipe d'étudiants passionnés qui croit que l'innovation n'a pas d'âge.</span>
-                    <span data-lang-en>We are a team of passionate students who believe innovation knows no age.</span>
-                    <span data-lang-ar>نحن فريق من الطلاب الشغوفين الذين يؤمنون بأن الابتكار لا يعرف عمراً.</span>
+                    <span data-lang-fr>Une nouvelle génération de studio digital. Créatif, technique, sans compromis.</span>
+                    <span data-lang-en>A new generation digital studio. Creative, technical, no compromise.</span>
+                    <span data-lang-ar>جيل جديد من استوديوهات التصميم الرقمي. إبداعي، تقني، بدون تنازلات.</span>
                 </h2>
             </div>
             <div class="about-body">
                 <div class="about-desc">
                     <p data-reveal-lines>
-                        <span data-lang-fr>IDeep est une entreprise de développement fondée par des étudiants ambitieux en informatique. Des plateformes web aux dashboards alimentés par l'IA, nous livrons des solutions qui font une vraie différence.</span>
-                        <span data-lang-en>IDeep is a development company founded by ambitious Computer Science students. From web platforms to AI-powered dashboards, we deliver solutions that make a real impact.</span>
-                        <span data-lang-ar>IDeep هي شركة تطوير أسسها طلاب طموحون في علوم الحاسوب. من منصات الويب إلى لوحات المعلومات المدعومة بالذكاء الاصطناعي، نقدم حلولاً تحدث فرقاً حقيقياً.</span>
+                        <span data-lang-fr>IDeep conçoit et développe des produits digitaux sur mesure : sites web, applications mobiles, dashboards data et solutions IA. Une équipe pluridisciplinaire qui livre vite, propre et bien.</span>
+                        <span data-lang-en>IDeep designs and develops custom digital products: websites, mobile apps, data dashboards and AI solutions. A multidisciplinary team that ships fast, clean and well.</span>
+                        <span data-lang-ar>تصمم وتطور IDeep منتجات رقمية مخصصة: مواقع ويب وتطبيقات جوال ولوحات بيانات وحلول ذكاء اصطناعي. فريق متعدد التخصصات يطلق المنتجات بسرعة ونظافة وجودة.</span>
                     </p>
-                </div>
-                <div class="about-stats">
-                    <div class="stat" data-anim>
-                        <div class="stat-num"><span data-count="4">0</span>+</div>
-                        <div class="stat-label">
-                            <span data-lang-fr>Projets livrés</span>
-                            <span data-lang-en>Projects delivered</span>
-                            <span data-lang-ar>مشاريع منجزة</span>
-                        </div>
-                    </div>
-                    <div class="stat" data-anim>
-                        <div class="stat-num"><span data-count="6">0</span></div>
-                        <div class="stat-label">
-                            <span data-lang-fr>Membres actifs</span>
-                            <span data-lang-en>Active members</span>
-                            <span data-lang-ar>أعضاء نشطون</span>
-                        </div>
-                    </div>
-                    <div class="stat" data-anim>
-                        <div class="stat-num"><span data-count="3">0</span>+</div>
-                        <div class="stat-label">
-                            <span data-lang-fr>Clients satisfaits</span>
-                            <span data-lang-en>Happy clients</span>
-                            <span data-lang-ar>عملاء راضون</span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -308,6 +292,179 @@
         </div>
     </section>
 
+    <!-- ========== FEATURED / SIGNATURE PROJECTS ========== -->
+    <section class="featured" id="featured">
+        <div class="featured-inner">
+            <div class="featured-header">
+                <span class="section-label">
+                    <span data-lang-fr>Projets signature</span>
+                    <span data-lang-en>Signature work</span>
+                    <span data-lang-ar>مشاريع مميزة</span>
+                </span>
+                <h2 class="featured-title">
+                    <span data-lang-fr>Nos dernières<br>créations.</span>
+                    <span data-lang-en>Our latest<br>creations.</span>
+                    <span data-lang-ar>أحدث<br>إبداعاتنا.</span>
+                </h2>
+                <p class="featured-sub">
+                    <span data-lang-fr>Deux projets phares récents, conçus et livrés par IDeep.</span>
+                    <span data-lang-en>Two recent flagship projects, crafted and shipped by IDeep.</span>
+                    <span data-lang-ar>مشروعان رئيسيان حديثان، من تصميم وتنفيذ IDeep.</span>
+                </p>
+            </div>
+
+            <div class="featured-stack">
+                <!-- ========== FEATURED PROJECT 1 — LA BONNE TABLE ========== -->
+                <article class="featured-card project" data-anim
+                    data-image="last work/la bonne table.png"
+                    data-title="La Bonne Table"
+                    data-cat-fr="SaaS / FoodTech" data-cat-en="SaaS / FoodTech" data-cat-ar="SaaS / تقنية الطعام"
+                    data-client-fr="Plateforme propriétaire IDeep" data-client-en="IDeep proprietary platform" data-client-ar="منصة IDeep الخاصة"
+                    data-year="2026"
+                    data-duration-fr="2 mois" data-duration-en="2 months" data-duration-ar="شهرين"
+                    data-role-fr="Design produit, Design UI, Développement Full-Stack" data-role-en="Product Design, UI Design, Full-Stack Development" data-role-ar="تصميم المنتج، تصميم الواجهة، التطوير الكامل"
+                    data-stack="React,Vite,TailwindCSS,Framer Motion,Netlify"
+                    data-link="https://neon-crepe-72c2fb.netlify.app/"
+                    data-problem-fr="Dans la plupart des restaurants, l'expérience client souffre de la même friction : on attend qu'un serveur apporte le menu, on attend qu'il revienne prendre la commande, on attend pour demander un verre, on attend l'addition. Résultat : clients frustrés, serveurs débordés en heure de pointe, erreurs de commande, et pertes de revenus pour le restaurant."
+                    data-problem-en="In most restaurants, the customer experience suffers from the same friction: you wait for a server to bring the menu, wait for them to come back and take the order, wait to ask for another drink, wait for the bill. The result: frustrated customers, overwhelmed servers during peak hours, order errors, and lost revenue."
+                    data-problem-ar="في معظم المطاعم، تعاني تجربة العميل من نفس الاحتكاك: تنتظر قدوم النادل بالقائمة، ثم تنتظر عودته لأخذ الطلب، ثم تنتظر لطلب مشروب آخر، ثم تنتظر الفاتورة. النتيجة: عملاء محبطون، ونوادل مرهقون في ساعات الذروة، وأخطاء في الطلبات، وخسائر في الإيرادات."
+                    data-solution-fr="La Bonne Table est une plateforme SaaS clé en main pour les restaurants. Le client scanne le QR code posé sur sa table avec son téléphone : le menu interactif s'affiche instantanément (catégories filtrables, recherche, photos & vidéos des plats, prix, allergènes). Il commande directement depuis l'app, l'ordre arrive en cuisine en temps réel. Un bouton dédié « Appeler le serveur » permet de demander un verre, l'addition ou n'importe quoi sans lever la main. Un dashboard restaurateur centralise les commandes par table, le suivi cuisine, les statistiques et la gestion du menu."
+                    data-solution-en="La Bonne Table is a turnkey SaaS platform for restaurants. The customer scans the QR code on their table with their phone: the interactive menu loads instantly (filterable categories, search, dish photos & videos, prices, allergens). They order directly from the app, the order goes straight to the kitchen in real time. A dedicated « Call waiter » button lets them request another drink, the bill, or anything else without raising a hand. A restaurant-side dashboard centralizes orders by table, kitchen tracking, analytics and menu management."
+                    data-solution-ar="La Bonne Table هي منصة SaaS جاهزة للمطاعم. يمسح العميل رمز QR الموضوع على طاولته بهاتفه: تظهر القائمة التفاعلية فورًا (فئات قابلة للتصفية، بحث، صور وفيديوهات للأطباق، أسعار، مسببات الحساسية). يطلب مباشرة من التطبيق، ويصل الطلب إلى المطبخ في الوقت الفعلي. زر مخصص «استدعاء النادل» يتيح طلب مشروب آخر أو الفاتورة أو أي شيء دون رفع اليد. لوحة تحكم خاصة بالمطعم تجمع الطلبات حسب الطاولة، وتتبع المطبخ، والتحليلات، وإدارة القائمة."
+                    data-results-fr="• Temps d'attente moyen réduit de plus de 50%&#10;• Bouton « Appeler le serveur » : appels ciblés au lieu de signes ignorés&#10;• Menu multilingue avec photos, vidéos, allergènes et prix toujours à jour&#10;• Dashboard temps réel pour la cuisine et la salle&#10;• Aucune installation côté client : un simple QR sur la table"
+                    data-results-en="• Average wait time reduced by more than 50%&#10;• « Call waiter » button: targeted calls instead of ignored hand signals&#10;• Multilingual menu with photos, videos, allergens and always-up-to-date prices&#10;• Real-time dashboard for kitchen and floor staff&#10;• Zero install for the customer: just a QR code on the table"
+                    data-results-ar="• تقليل متوسط وقت الانتظار بأكثر من 50٪&#10;• زر «استدعاء النادل»: نداءات موجهة بدلاً من إشارات يد متجاهَلة&#10;• قائمة متعددة اللغات مع صور وفيديوهات ومسببات حساسية وأسعار محدّثة دائمًا&#10;• لوحة تحكم في الوقت الفعلي للمطبخ والصالة&#10;• بدون أي تثبيت للعميل: مجرد رمز QR على الطاولة"
+                    data-gallery="last work/la bonne table dining.png|last work/la bonne table menu.png|last work/la bonne table modal.png">
+                    <div class="featured-card-visual featured-card-visual-trio">
+                        <div class="featured-card-badge">
+                            <span class="featured-card-badge-dot"></span>
+                            <span data-lang-fr>Nouveau · 2026</span>
+                            <span data-lang-en>New · 2026</span>
+                            <span data-lang-ar>جديد · 2026</span>
+                        </div>
+                        <div class="trio">
+                            <div class="trio-img trio-left">
+                                <img src="last work/la bonne table menu.png" alt="La Bonne Table — Notre Menu" loading="lazy">
+                            </div>
+                            <div class="trio-img trio-center">
+                                <img src="last work/la bonne table dining.png" alt="La Bonne Table — Menu" loading="lazy">
+                            </div>
+                            <div class="trio-img trio-right">
+                                <img src="last work/la bonne table.png" alt="La Bonne Table — Hero" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="featured-card-glow"></div>
+                    </div>
+                    <div class="featured-card-content">
+                        <span class="featured-card-num">01</span>
+                        <span class="featured-card-cat">
+                            <span data-lang-fr>SaaS · FoodTech</span>
+                            <span data-lang-en>SaaS · FoodTech</span>
+                            <span data-lang-ar>SaaS · تقنية الطعام</span>
+                        </span>
+                        <h3 class="featured-card-title">La Bonne Table</h3>
+                        <p class="featured-card-desc">
+                            <span data-lang-fr>Plateforme SaaS pour restaurants : le client scanne un QR sur sa table, consulte le menu, commande et appelle le serveur en un clic. Plus d'attente, plus d'erreurs, plus de revenus.</span>
+                            <span data-lang-en>SaaS platform for restaurants: customers scan a QR on their table, browse the menu, order and call the waiter in one tap. Less waiting, fewer errors, more revenue.</span>
+                            <span data-lang-ar>منصة SaaS للمطاعم: يمسح العميل رمز QR على طاولته، ويتصفح القائمة، ويطلب، ويستدعي النادل بنقرة واحدة. انتظار أقل، أخطاء أقل، إيرادات أكثر.</span>
+                        </p>
+                        <div class="featured-card-stack">
+                            <span>React</span>
+                            <span>TailwindCSS</span>
+                            <span>Framer Motion</span>
+                            <span>Netlify</span>
+                        </div>
+                        <div class="featured-card-actions">
+                            <span class="featured-card-cta">
+                                <span data-lang-fr>Voir l'étude de cas</span>
+                                <span data-lang-en>View case study</span>
+                                <span data-lang-ar>عرض دراسة الحالة</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                            <a class="featured-card-live" href="https://neon-crepe-72c2fb.netlify.app/" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span data-lang-fr>Site live</span>
+                                <span data-lang-en>Live site</span>
+                                <span data-lang-ar>الموقع المباشر</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ========== FEATURED PROJECT 2 — BUSINESSFLOW ========== -->
+                <article class="featured-card project" data-anim
+                    data-image="last work/businessflow clients.png"
+                    data-title="BusinessFlow"
+                    data-cat-fr="SaaS / Gestion d'entreprise" data-cat-en="SaaS / Business Management" data-cat-ar="SaaS / إدارة الأعمال"
+                    data-client-fr="Plateforme propriétaire IDeep" data-client-en="IDeep proprietary platform" data-client-ar="منصة IDeep الخاصة"
+                    data-year="2026"
+                    data-duration-fr="3 mois" data-duration-en="3 months" data-duration-ar="3 أشهر"
+                    data-role-fr="Design produit, Design UI, Développement Full-Stack" data-role-en="Product Design, UI Design, Full-Stack Development" data-role-ar="تصميم المنتج، تصميم الواجهة، التطوير الكامل"
+                    data-stack="React,Node.js,MongoDB,TailwindCSS,Chart.js"
+                    data-link="#"
+                    data-problem-fr="Les PME tunisiennes jonglent entre Excel, WhatsApp et cahiers papier pour gérer leur stock, leurs clients et leur facturation. Résultat : pertes d'informations, erreurs de saisie, impossible de savoir en temps réel combien de pièces il reste, qui doit payer, ou quel produit est le plus rentable."
+                    data-problem-en="Tunisian SMBs juggle Excel, WhatsApp and paper notebooks to manage their stock, clients and invoicing. The result: lost information, data-entry errors, no real-time view of remaining inventory, outstanding payments, or most profitable products."
+                    data-problem-ar="تتنقل الشركات الصغيرة والمتوسطة التونسية بين Excel وWhatsApp ودفاتر ورقية لإدارة المخزون والعملاء والفواتير. النتيجة: ضياع المعلومات، أخطاء الإدخال، وعدم وجود رؤية لحظية للمخزون المتبقي أو المدفوعات المعلقة أو المنتجات الأكثر ربحية."
+                    data-solution-fr="BusinessFlow est une application SaaS tout-en-un pour les PME : dashboard temps réel avec KPIs clés, gestion de stock (entrées/sorties/alertes de seuil), base clients complète avec historique, facturation (sortantes, entrantes, bons de livraison) avec calcul automatique TTC, module analytics pour visualiser les ventes, et paramètres multi-profils (profil, entreprise, sécurité, préférences). Interface épurée, navigation latérale claire, pensée pour un patron qui n'a pas 3 heures à perdre."
+                    data-solution-en="BusinessFlow is an all-in-one SaaS app for SMBs: real-time dashboard with key KPIs, stock management (in/out/threshold alerts), complete client base with history, invoicing (outgoing, incoming, delivery notes) with automatic VAT computation, analytics module to visualize sales, and multi-profile settings (profile, company, security, preferences). Clean interface, clear sidebar navigation, built for a busy business owner."
+                    data-solution-ar="BusinessFlow هو تطبيق SaaS متكامل للشركات الصغيرة والمتوسطة: لوحة تحكم في الوقت الفعلي مع مؤشرات الأداء الرئيسية، وإدارة المخزون (الواردات/الصادرات/تنبيهات الحد)، وقاعدة عملاء كاملة مع السجل، والفواتير (الصادرة، الواردة، إشعارات التسليم) مع حساب تلقائي للضرائب، وحدة تحليلات لتصور المبيعات، وإعدادات متعددة الملفات الشخصية. واجهة أنيقة، تنقل جانبي واضح، مصممة لصاحب عمل مشغول."
+                    data-results-fr="• Gestion centralisée : stock, clients, factures, analytics&#10;• Calcul automatique TTC et suivi des paiements en temps réel&#10;• Alertes de seuil pour éviter les ruptures&#10;• Dashboard KPIs pour piloter l'activité en un coup d'œil&#10;• Multi-utilisateurs avec rôles et permissions"
+                    data-results-en="• Centralized management: stock, clients, invoices, analytics&#10;• Automatic VAT calculation and real-time payment tracking&#10;• Threshold alerts to prevent stock-outs&#10;• KPI dashboard to monitor activity at a glance&#10;• Multi-user with roles and permissions"
+                    data-results-ar="• إدارة مركزية: المخزون، العملاء، الفواتير، التحليلات&#10;• حساب تلقائي للضرائب وتتبع المدفوعات في الوقت الفعلي&#10;• تنبيهات الحد لتفادي نفاد المخزون&#10;• لوحة KPI لمراقبة النشاط في لمحة&#10;• متعدد المستخدمين مع أدوار وصلاحيات"
+                    data-gallery="last work/businessflow login.png|last work/businessflow invoices.png|last work/businessflow settings.png">
+                    <div class="featured-card-visual featured-card-visual-trio">
+                        <div class="featured-card-badge">
+                            <span class="featured-card-badge-dot"></span>
+                            <span data-lang-fr>Nouveau · 2026</span>
+                            <span data-lang-en>New · 2026</span>
+                            <span data-lang-ar>جديد · 2026</span>
+                        </div>
+                        <div class="trio">
+                            <div class="trio-img trio-left">
+                                <img src="last work/businessflow settings.png" alt="BusinessFlow — Settings" loading="lazy" style="object-position: 42% top;">
+                            </div>
+                            <div class="trio-img trio-center">
+                                <img src="last work/businessflow clients.png" alt="BusinessFlow — Client management" loading="lazy" style="object-position: 45% top;">
+                            </div>
+                            <div class="trio-img trio-right">
+                                <img src="last work/businessflow invoices.png" alt="BusinessFlow — Invoice management" loading="lazy" style="object-position: 48% top;">
+                            </div>
+                        </div>
+                        <div class="featured-card-glow"></div>
+                    </div>
+                    <div class="featured-card-content">
+                        <span class="featured-card-num">02</span>
+                        <span class="featured-card-cat">
+                            <span data-lang-fr>SaaS · Gestion d'entreprise</span>
+                            <span data-lang-en>SaaS · Business Management</span>
+                            <span data-lang-ar>SaaS · إدارة الأعمال</span>
+                        </span>
+                        <h3 class="featured-card-title">BusinessFlow</h3>
+                        <p class="featured-card-desc">
+                            <span data-lang-fr>Application SaaS tout-en-un pour les PME : gestion de stock, clients, factures et analytics — centralisés dans un dashboard épuré.</span>
+                            <span data-lang-en>All-in-one SaaS app for SMBs: stock, client, invoice and analytics management — centralized in one clean dashboard.</span>
+                            <span data-lang-ar>تطبيق SaaS شامل للشركات الصغيرة: إدارة المخزون والعملاء والفواتير والتحليلات — في لوحة تحكم أنيقة واحدة.</span>
+                        </p>
+                        <div class="featured-card-stack">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                            <span>TailwindCSS</span>
+                        </div>
+                        <div class="featured-card-actions">
+                            <span class="featured-card-cta">
+                                <span data-lang-fr>Voir l'étude de cas</span>
+                                <span data-lang-en>View case study</span>
+                                <span data-lang-ar>عرض دراسة الحالة</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <!-- ========== PORTFOLIO ========== -->
     <section class="portfolio" id="portfolio">
         <div class="portfolio-inner">
@@ -319,13 +476,47 @@
                     <span data-lang-ar>أعمالنا الأخيرة</span>
                 </h2>
             </div>
-            <div class="portfolio-grid">
-                <article class="project" data-anim>
+            <div class="portfolio-showcase">
+                <div class="portfolio-preview" id="portfolioPreview" aria-hidden="true">
+                    <div class="portfolio-preview-inner" id="portfolioPreviewInner"></div>
+                </div>
+                <div class="portfolio-list">
+                <article class="project" data-anim
+                    data-image="last work/dashboard az airlines.png"
+                    data-title="AZ Airlines"
+                    data-cat-fr="Dashboard / Analytics" data-cat-en="Dashboard / Analytics" data-cat-ar="لوحة تحكم / تحليلات"
+                    data-client-fr="AZ Airlines" data-client-en="AZ Airlines" data-client-ar="AZ Airlines"
+                    data-year="2024"
+                    data-duration-fr="3 mois" data-duration-en="3 months" data-duration-ar="3 أشهر"
+                    data-role-fr="Data Analyse, Design, Développement" data-role-en="Data Analytics, Design, Development" data-role-ar="تحليل البيانات، التصميم، التطوير"
+                    data-stack="Python,Power BI,SQL,Pandas,Scikit-learn"
+                    data-link="#"
+                    data-problem-fr="AZ Airlines disposait de millions de lignes de données passagers mais aucun moyen d'en tirer des insights actionnables. Les équipes marketing et opérations naviguaient à l'aveugle, sans segmentation claire ni vision sur les comportements de réservation."
+                    data-problem-en="AZ Airlines had millions of rows of passenger data but no way to extract actionable insights. Marketing and operations teams were flying blind, with no clear segmentation or view of booking behaviors."
+                    data-problem-ar="كان لدى AZ Airlines ملايين الصفوف من بيانات الركاب ولكن لا توجد طريقة لاستخراج رؤى قابلة للتنفيذ. كانت فرق التسويق والعمليات تعمل بشكل أعمى، دون تجزئة واضحة أو رؤية لسلوكيات الحجز."
+                    data-solution-fr="Nous avons construit un dashboard interactif complet avec segmentation client par RFM, analyse prédictive du churn, visualisation des routes les plus rentables et alertes intelligentes. Pipeline de données automatisé pour rafraîchir les KPIs en temps quasi-réel."
+                    data-solution-en="We built a full interactive dashboard with RFM-based customer segmentation, predictive churn analysis, profitable route visualization and smart alerts. Automated data pipeline to refresh KPIs in near real-time."
+                    data-solution-ar="بنينا لوحة تحكم تفاعلية كاملة مع تجزئة العملاء على أساس RFM، وتحليل تنبؤي للاضطراب، وتصور للطرق الأكثر ربحية، وتنبيهات ذكية. خط أنابيب بيانات آلي لتحديث مؤشرات الأداء في الوقت شبه الفعلي."
+                    data-results-fr="• 4 segments clients clairement identifiés et exploitables&#10;• Réduction de 30% du temps d'analyse mensuel&#10;• Détection proactive de 12 routes sous-performantes&#10;• Adopté par 3 équipes (marketing, ops, finance)"
+                    data-results-en="• 4 clearly identified and actionable customer segments&#10;• 30% reduction in monthly analysis time&#10;• Proactive detection of 12 underperforming routes&#10;• Adopted by 3 teams (marketing, ops, finance)"
+                    data-results-ar="• 4 شرائح عملاء محددة وقابلة للتنفيذ بوضوح&#10;• تخفيض 30٪ في وقت التحليل الشهري&#10;• كشف استباقي عن 12 طريقًا ضعيف الأداء&#10;• اعتمدتها 3 فرق (التسويق، العمليات، المالية)">
                     <div class="project-img">
                         <img src="last work/dashboard az airlines.png" alt="AZ Airlines" loading="lazy">
+                        <div class="project-overlay">
+                            <span class="project-overlay-btn">
+                                <span data-lang-fr>Voir l'étude</span>
+                                <span data-lang-en>View case study</span>
+                                <span data-lang-ar>عرض الدراسة</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </div>
                     </div>
                     <div class="project-info">
-                        <span class="project-cat">Dashboard / Analytics</span>
+                        <span class="project-cat">
+                            <span data-lang-fr>Dashboard / Analytics</span>
+                            <span data-lang-en>Dashboard / Analytics</span>
+                            <span data-lang-ar>لوحة تحكم / تحليلات</span>
+                        </span>
                         <h3>AZ Airlines</h3>
                         <p>
                             <span data-lang-fr>Dashboard interactif pour la segmentation client et l'analyse des comportements voyageurs.</span>
@@ -334,13 +525,43 @@
                         </p>
                     </div>
                 </article>
-                <article class="project" data-anim>
+                <article class="project" data-anim
+                    data-image="last work/eat and fit.png"
+                    data-title="Eat &amp; Fit"
+                    data-cat-fr="Web / Santé" data-cat-en="Web / Health" data-cat-ar="ويب / صحة"
+                    data-client-fr="Eat &amp; Fit" data-client-en="Eat &amp; Fit" data-client-ar="Eat &amp; Fit"
+                    data-year="2024"
+                    data-duration-fr="4 mois" data-duration-en="4 months" data-duration-ar="4 أشهر"
+                    data-role-fr="Design produit, Développement Full-Stack" data-role-en="Product Design, Full-Stack Development" data-role-ar="تصميم المنتج، التطوير الكامل"
+                    data-stack="React,Node.js,MongoDB,TailwindCSS,Stripe"
+                    data-link="#"
+                    data-problem-fr="Trouver une nutritionniste, recevoir un plan personnalisé et le suivre sur la durée — toute la chaîne était fragmentée. Les utilisateurs jonglaient entre WhatsApp, Excel et papier."
+                    data-problem-en="Finding a nutritionist, getting a personalized plan and following it over time — the entire chain was fragmented. Users juggled between WhatsApp, Excel and paper."
+                    data-problem-ar="إيجاد أخصائية تغذية، والحصول على خطة شخصية ومتابعتها بمرور الوقت — كانت السلسلة بأكملها مجزأة. كان المستخدمون يتنقلون بين WhatsApp و Excel والورق."
+                    data-solution-fr="Plateforme web complète unifiant prise de rendez-vous, plans de repas générés sur mesure, suivi quotidien, calculateur de macros et messagerie nutritionniste-client intégrée."
+                    data-solution-en="Full web platform unifying booking, custom-generated meal plans, daily tracking, macro calculator, and built-in nutritionist-client messaging."
+                    data-solution-ar="منصة ويب كاملة توحد الحجز وخطط الوجبات المخصصة والتتبع اليومي وحاسبة الماكرو والمراسلة المدمجة بين أخصائي التغذية والعميل."
+                    data-results-fr="• 200+ utilisateurs actifs dans les 3 premiers mois&#10;• Note moyenne 4.8/5&#10;• Temps de création d'un plan divisé par 5 pour les nutritionnistes&#10;• Système de paiement Stripe intégré"
+                    data-results-en="• 200+ active users in the first 3 months&#10;• 4.8/5 average rating&#10;• Plan creation time divided by 5 for nutritionists&#10;• Integrated Stripe payment system"
+                    data-results-ar="• أكثر من 200 مستخدم نشط في الأشهر الثلاثة الأولى&#10;• تقييم متوسط 4.8/5&#10;• تقليل وقت إنشاء الخطة 5 مرات لأخصائيي التغذية&#10;• نظام دفع Stripe مدمج">
                     <div class="project-img">
                         <img src="last work/eat and fit.png" alt="Eat & Fit" loading="lazy">
+                        <div class="project-overlay">
+                            <span class="project-overlay-btn">
+                                <span data-lang-fr>Voir l'étude</span>
+                                <span data-lang-en>View case study</span>
+                                <span data-lang-ar>عرض الدراسة</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </div>
                     </div>
                     <div class="project-info">
-                        <span class="project-cat">Web / Health</span>
-                        <h3>Eat & Fit</h3>
+                        <span class="project-cat">
+                            <span data-lang-fr>Web / Santé</span>
+                            <span data-lang-en>Web / Health</span>
+                            <span data-lang-ar>ويب / صحة</span>
+                        </span>
+                        <h3>Eat &amp; Fit</h3>
                         <p>
                             <span data-lang-fr>Application web de suivi nutritionnel avec plans de repas personnalisés.</span>
                             <span data-lang-en>Nutrition tracking web app with personalized meal plans.</span>
@@ -348,12 +569,42 @@
                         </p>
                     </div>
                 </article>
-                <article class="project" data-anim>
+                <article class="project" data-anim
+                    data-image="last work/site web ibsar.png"
+                    data-title="IBSAR Voice"
+                    data-cat-fr="Web / Accessibilité" data-cat-en="Web / Accessibility" data-cat-ar="ويب / إمكانية الوصول"
+                    data-client-fr="IBSAR" data-client-en="IBSAR" data-client-ar="IBSAR"
+                    data-year="2024"
+                    data-duration-fr="2 mois" data-duration-en="2 months" data-duration-ar="شهرين"
+                    data-role-fr="UX Recherche, Design, Développement" data-role-en="UX Research, Design, Development" data-role-ar="بحث UX، تصميم، تطوير"
+                    data-stack="React,Web Speech API,Node.js,Express,WCAG 2.1"
+                    data-link="#"
+                    data-problem-fr="Les personnes malvoyantes ou aveugles n'ont pas accès aux mêmes contenus web. Les lecteurs d'écran existants sont complexes et l'expérience est rarement pensée pour eux dès la conception."
+                    data-problem-en="Visually impaired and blind people don't have equal access to web content. Existing screen readers are complex and the experience is rarely designed for them from the start."
+                    data-problem-ar="لا يتمتع الأشخاص ضعاف البصر والمكفوفون بوصول متساوٍ إلى محتوى الويب. قارئات الشاشة الموجودة معقدة ونادرًا ما تكون التجربة مصممة لهم من البداية."
+                    data-solution-fr="Plateforme entièrement navigable à la voix : recherche, lecture de contenu, navigation entre sections, formulaires — tout pilotable sans clavier ni souris. Conformité WCAG 2.1 AA."
+                    data-solution-en="Fully voice-navigable platform: search, content reading, section navigation, forms — everything operable without keyboard or mouse. WCAG 2.1 AA compliant."
+                    data-solution-ar="منصة قابلة للتصفح بالكامل بالصوت: بحث، قراءة المحتوى، التنقل بين الأقسام، النماذج — كل شيء يمكن تشغيله بدون لوحة مفاتيح أو ماوس. متوافق مع WCAG 2.1 AA."
+                    data-results-fr="• 100% des fonctionnalités accessibles à la voix&#10;• Conformité WCAG 2.1 niveau AA&#10;• Tests utilisateurs avec association locale&#10;• Reconnaissance vocale FR/AR/EN"
+                    data-results-en="• 100% of features accessible by voice&#10;• WCAG 2.1 AA compliance&#10;• User-tested with local association&#10;• Voice recognition FR/AR/EN"
+                    data-results-ar="• 100٪ من الميزات يمكن الوصول إليها بالصوت&#10;• الامتثال لـ WCAG 2.1 AA&#10;• تم اختبارها من قبل المستخدمين مع جمعية محلية&#10;• التعرف على الصوت FR/AR/EN">
                     <div class="project-img">
                         <img src="last work/site web ibsar.png" alt="IBSAR Voice" loading="lazy">
+                        <div class="project-overlay">
+                            <span class="project-overlay-btn">
+                                <span data-lang-fr>Voir l'étude</span>
+                                <span data-lang-en>View case study</span>
+                                <span data-lang-ar>عرض الدراسة</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </div>
                     </div>
                     <div class="project-info">
-                        <span class="project-cat">Web / Accessibility</span>
+                        <span class="project-cat">
+                            <span data-lang-fr>Web / Accessibilité</span>
+                            <span data-lang-en>Web / Accessibility</span>
+                            <span data-lang-ar>ويب / إمكانية الوصول</span>
+                        </span>
                         <h3>IBSAR Voice</h3>
                         <p>
                             <span data-lang-fr>Plateforme d'accessibilité vocale pour naviguer le web via commandes vocales.</span>
@@ -362,12 +613,219 @@
                         </p>
                     </div>
                 </article>
-                <article class="project" data-anim>
+                <article class="project" data-anim
+                    data-image="last work/patrimonde.png"
+                    data-title="Patrimonde.tn"
+                    data-cat-fr="Web / Tourisme & Découverte" data-cat-en="Web / Tourism & Discovery" data-cat-ar="ويب / سياحة واستكشاف"
+                    data-client-fr="Patrimonde" data-client-en="Patrimonde" data-client-ar="Patrimonde"
+                    data-year="2025"
+                    data-duration-fr="3 mois" data-duration-en="3 months" data-duration-ar="3 أشهر"
+                    data-role-fr="Design produit, UI, Développement Full-Stack" data-role-en="Product Design, UI, Full-Stack Development" data-role-ar="تصميم المنتج، واجهة المستخدم، التطوير الكامل"
+                    data-stack="PHP,MySQL,HTML5,CSS3,JavaScript"
+                    data-link="#"
+                    data-problem-fr="Les voyageurs qui découvrent la Tunisie peinent à trouver au même endroit les événements culturels, restaurants, hôtels et excursions de qualité. L'information est éparpillée entre blogs, groupes Facebook et sites isolés, rendant la planification chronophage et imprévisible."
+                    data-problem-en="Travelers discovering Tunisia struggle to find quality cultural events, restaurants, hotels and excursions in one place. Information is scattered across blogs, Facebook groups and isolated websites, making planning time-consuming and unpredictable."
+                    data-problem-ar="يعاني المسافرون الذين يكتشفون تونس من صعوبة العثور في مكان واحد على الفعاليات الثقافية والمطاعم والفنادق والرحلات الجيدة. المعلومات مشتتة بين المدونات ومجموعات فيسبوك والمواقع المنعزلة، مما يجعل التخطيط مرهقًا ومتوقعًا بشكل سيء."
+                    data-solution-fr="Patrimonde est une plateforme tout-en-un de découverte touristique et culturelle : annuaire d'événements, fiches détaillées pour hôtels/restaurants/excursions, blog éditorial, feed social, et boutique de produits locaux. Recherche intelligente par lieu et par catégorie, système de favoris, profils utilisateurs et dashboard administrateur pour gérer tout le contenu."
+                    data-solution-en="Patrimonde is an all-in-one discovery platform for tourism and culture: event directory, detailed listings for hotels/restaurants/excursions, editorial blog, social feed, and local-products shop. Smart search by location and category, favorites system, user profiles, and an admin dashboard to manage all content."
+                    data-solution-ar="Patrimonde هي منصة متكاملة لاكتشاف السياحة والثقافة: دليل للفعاليات، قوائم مفصلة للفنادق والمطاعم والرحلات، مدونة تحريرية، موجز اجتماعي، ومتجر للمنتجات المحلية. بحث ذكي حسب الموقع والفئة، نظام المفضلة، ملفات شخصية للمستخدمين، ولوحة تحكم للمسؤولين لإدارة كل المحتوى."
+                    data-results-fr="• 6 sections unifiées : Events, Feed, Blog, Excursions, Shop, Favoris&#10;• Dashboard admin avec gestion CRUD complète&#10;• Authentification et profils utilisateurs&#10;• Recherche avancée multicritères&#10;• Architecture PHP/MySQL scalable"
+                    data-results-en="• 6 unified sections: Events, Feed, Blog, Excursions, Shop, Favorites&#10;• Full CRUD admin dashboard&#10;• Authentication and user profiles&#10;• Advanced multi-criteria search&#10;• Scalable PHP/MySQL architecture"
+                    data-results-ar="• 6 أقسام موحدة: الفعاليات، الخلاصة، المدونة، الرحلات، المتجر، المفضلة&#10;• لوحة تحكم إدارية CRUD كاملة&#10;• مصادقة وملفات شخصية للمستخدمين&#10;• بحث متقدم متعدد المعايير&#10;• بنية PHP/MySQL قابلة للتطوير">
                     <div class="project-img">
-                        <img src="last work/site web uniboard.png" alt="Uniboard" loading="lazy">
+                        <img src="last work/patrimonde.png" alt="Patrimonde.tn" loading="lazy">
+                        <div class="project-overlay">
+                            <span class="project-overlay-btn">
+                                <span data-lang-fr>Voir l'étude</span>
+                                <span data-lang-en>View case study</span>
+                                <span data-lang-ar>عرض الدراسة</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </div>
                     </div>
                     <div class="project-info">
-                        <span class="project-cat">Web / Education</span>
+                        <span class="project-cat">
+                            <span data-lang-fr>Web / Tourisme</span>
+                            <span data-lang-en>Web / Tourism</span>
+                            <span data-lang-ar>ويب / سياحة</span>
+                        </span>
+                        <h3>Patrimonde.tn</h3>
+                        <p>
+                            <span data-lang-fr>Plateforme tout-en-un pour découvrir événements, hôtels, restaurants et excursions en Tunisie.</span>
+                            <span data-lang-en>All-in-one platform to discover events, hotels, restaurants and excursions in Tunisia.</span>
+                            <span data-lang-ar>منصة شاملة لاكتشاف الفعاليات والفنادق والمطاعم والرحلات في تونس.</span>
+                        </p>
+                    </div>
+                </article>
+                <article class="project" data-anim
+                    data-image="last work/education tn.png"
+                    data-title="Education.tn"
+                    data-cat-fr="Web / Éducation & Admin" data-cat-en="Web / Education & Admin" data-cat-ar="ويب / تعليم وإدارة"
+                    data-client-fr="Education.tn" data-client-en="Education.tn" data-client-ar="Education.tn"
+                    data-year="2025"
+                    data-duration-fr="3 mois" data-duration-en="3 months" data-duration-ar="3 أشهر"
+                    data-role-fr="Design UI, Développement Full-Stack" data-role-en="UI Design, Full-Stack Development" data-role-ar="تصميم الواجهة، التطوير الكامل"
+                    data-stack="PHP,MySQL,Bootstrap,JavaScript"
+                    data-link="#"
+                    data-problem-fr="Les étudiants tunisiens n'ont pas de portail centralisé pour consulter leurs informations académiques, s'inscrire aux cours, télécharger les supports et suivre leur progression. Les administrations doivent gérer tout ça sur papier ou via des outils fragmentés, ce qui génère erreurs et temps perdu."
+                    data-problem-en="Tunisian students lack a centralized portal to check academic information, enroll in courses, download materials and track progress. Administrations manage everything on paper or through fragmented tools, leading to errors and wasted time."
+                    data-problem-ar="يفتقر الطلاب التونسيون إلى بوابة مركزية للاطلاع على معلوماتهم الأكاديمية والتسجيل في الدورات وتنزيل المواد ومتابعة التقدم. تدير الإدارات كل شيء على الورق أو عبر أدوات متفرقة، مما يؤدي إلى أخطاء وإهدار للوقت."
+                    data-solution-fr="Education.tn est un portail éducatif complet avec espace étudiant et espace administrateur. Les étudiants créent un compte, consultent leur tableau de bord, accèdent aux ressources. Les admins gèrent les inscriptions, publient les annonces et suivent les statistiques. Authentification sécurisée, rôles & permissions, interface responsive."
+                    data-solution-en="Education.tn is a complete education portal with student and admin spaces. Students create an account, check their dashboard, access resources. Admins manage enrollments, publish announcements and track statistics. Secure authentication, roles & permissions, responsive interface."
+                    data-solution-ar="Education.tn هي بوابة تعليمية كاملة مع مساحة للطلاب وأخرى للمسؤولين. ينشئ الطلاب حسابًا، ويتحققون من لوحة التحكم، ويصلون إلى الموارد. يدير المسؤولون التسجيلات، وينشرون الإعلانات، ويتابعون الإحصائيات. مصادقة آمنة، أدوار وصلاحيات، واجهة متجاوبة."
+                    data-results-fr="• Authentification sécurisée avec rôles multiples&#10;• Dashboard étudiant & dashboard administrateur&#10;• Gestion des inscriptions et des annonces&#10;• Interface responsive&#10;• Base de données MySQL optimisée"
+                    data-results-en="• Secure authentication with multiple roles&#10;• Student & admin dashboards&#10;• Enrollment and announcement management&#10;• Responsive interface&#10;• Optimized MySQL database"
+                    data-results-ar="• مصادقة آمنة بأدوار متعددة&#10;• لوحات تحكم للطلاب والمسؤولين&#10;• إدارة التسجيلات والإعلانات&#10;• واجهة متجاوبة&#10;• قاعدة بيانات MySQL محسّنة">
+                    <div class="project-img">
+                        <img src="last work/education tn.png" alt="Education.tn" loading="lazy">
+                        <div class="project-overlay">
+                            <span class="project-overlay-btn">
+                                <span data-lang-fr>Voir l'étude</span>
+                                <span data-lang-en>View case study</span>
+                                <span data-lang-ar>عرض الدراسة</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-cat">
+                            <span data-lang-fr>Web / Éducation</span>
+                            <span data-lang-en>Web / Education</span>
+                            <span data-lang-ar>ويب / تعليم</span>
+                        </span>
+                        <h3>Education.tn</h3>
+                        <p>
+                            <span data-lang-fr>Portail éducatif avec espace étudiant et dashboard administrateur.</span>
+                            <span data-lang-en>Education portal with student and admin dashboards.</span>
+                            <span data-lang-ar>بوابة تعليمية مع لوحات تحكم للطلاب والمسؤولين.</span>
+                        </p>
+                    </div>
+                </article>
+                <article class="project" data-anim
+                    data-image="last work/eduweb tn.png"
+                    data-title="Eduweb.tn"
+                    data-cat-fr="Web / Formation en ligne" data-cat-en="Web / Online Training" data-cat-ar="ويب / تدريب عبر الإنترنت"
+                    data-client-fr="Eduweb" data-client-en="Eduweb" data-client-ar="Eduweb"
+                    data-year="2025"
+                    data-duration-fr="3 mois" data-duration-en="3 months" data-duration-ar="3 أشهر"
+                    data-role-fr="Design UI, Développement Full-Stack" data-role-en="UI Design, Full-Stack Development" data-role-ar="تصميم الواجهة، التطوير الكامل"
+                    data-stack="React,Node.js,MongoDB,TailwindCSS"
+                    data-link="#"
+                    data-problem-fr="Les apprenants cherchent des formations ciblées en design, développement et compétences digitales, mais les plateformes existantes sont soit trop génériques, soit réservées aux universités, soit en anglais uniquement. Il manque un espace tunisien moderne pour se former rapidement avec du contenu de qualité."
+                    data-problem-en="Learners are looking for focused training in design, development and digital skills, but existing platforms are either too generic, university-only, or English-only. There's no modern Tunisian space for fast, quality upskilling."
+                    data-problem-ar="يبحث المتعلمون عن تدريب مركّز في التصميم والتطوير والمهارات الرقمية، لكن المنصات الموجودة إما عامة جدًا، أو مقتصرة على الجامعات، أو باللغة الإنجليزية فقط. لا توجد مساحة تونسية حديثة للتدريب السريع بمحتوى جيد."
+                    data-solution-fr="Eduweb est une plateforme de formations en ligne ciblée : catalogue de cours (Web Design, Dev, Marketing, Soft Skills...), fiches détaillées avec programme et formateur, inscription en un clic, espace apprenant avec suivi des cours, et dashboard formateur pour publier et gérer son contenu. Interface responsive et rapide."
+                    data-solution-en="Eduweb is a targeted online training platform: course catalog (Web Design, Dev, Marketing, Soft Skills...), detailed pages with program and instructor, one-click enrollment, learner space with course tracking, and an instructor dashboard to publish and manage content. Fast, responsive interface."
+                    data-solution-ar="Eduweb هي منصة تدريب عبر الإنترنت موجهة: كتالوج دورات (تصميم ويب، تطوير، تسويق، مهارات ناعمة...)، صفحات مفصلة مع البرنامج والمدرب، تسجيل بنقرة واحدة، مساحة للمتعلم مع متابعة الدورات، ولوحة تحكم للمدربين لنشر وإدارة المحتوى. واجهة متجاوبة وسريعة."
+                    data-results-fr="• Catalogue de formations multi-catégories&#10;• Espace apprenant avec suivi de progression&#10;• Dashboard formateur pour gérer ses cours&#10;• Inscription simplifiée en un clic&#10;• Interface responsive et rapide"
+                    data-results-en="• Multi-category course catalog&#10;• Learner space with progress tracking&#10;• Instructor dashboard to manage courses&#10;• One-click enrollment&#10;• Fast, responsive interface"
+                    data-results-ar="• كتالوج دورات متعدد الفئات&#10;• مساحة للمتعلم مع متابعة التقدم&#10;• لوحة تحكم للمدرب لإدارة الدورات&#10;• تسجيل مبسط بنقرة واحدة&#10;• واجهة متجاوبة وسريعة">
+                    <div class="project-img">
+                        <img src="last work/eduweb tn.png" alt="Eduweb.tn" loading="lazy">
+                        <div class="project-overlay">
+                            <span class="project-overlay-btn">
+                                <span data-lang-fr>Voir l'étude</span>
+                                <span data-lang-en>View case study</span>
+                                <span data-lang-ar>عرض الدراسة</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-cat">
+                            <span data-lang-fr>Web / Formation</span>
+                            <span data-lang-en>Web / Training</span>
+                            <span data-lang-ar>ويب / تدريب</span>
+                        </span>
+                        <h3>Eduweb.tn</h3>
+                        <p>
+                            <span data-lang-fr>Plateforme de formations en ligne avec catalogue de cours, espace apprenant et dashboard formateur.</span>
+                            <span data-lang-en>Online training platform with course catalog, learner space and instructor dashboard.</span>
+                            <span data-lang-ar>منصة تدريب عبر الإنترنت مع كتالوج دورات، مساحة للمتعلم، ولوحة تحكم للمدرب.</span>
+                        </p>
+                    </div>
+                </article>
+                <article class="project" data-anim
+                    data-image="last work/careerlink hero.png"
+                    data-title="CareerLink"
+                    data-cat-fr="Web / Emploi & Carrière" data-cat-en="Web / Careers & Jobs" data-cat-ar="ويب / توظيف ومهن"
+                    data-client-fr="CareerLink" data-client-en="CareerLink" data-client-ar="CareerLink"
+                    data-year="2025"
+                    data-duration-fr="3 mois" data-duration-en="3 months" data-duration-ar="3 أشهر"
+                    data-role-fr="Design produit, UI, Développement Full-Stack" data-role-en="Product Design, UI, Full-Stack Development" data-role-ar="تصميم المنتج، واجهة المستخدم، التطوير الكامل"
+                    data-stack="React,Node.js,PostgreSQL,TailwindCSS"
+                    data-link="#"
+                    data-problem-fr="Les talents tunisiens cherchent des opportunités locales et internationales, et les entreprises cherchent des profils qualifiés — mais le marché est saturé d'intermédiaires, de groupes Facebook et de CV perdus. Aucun espace élégant ne réunit offres, candidatures, formations et réseau professionnel au même endroit."
+                    data-problem-en="Tunisian talents look for local and international opportunities, and companies look for qualified profiles — but the market is saturated with middlemen, Facebook groups and lost CVs. No elegant space brings together jobs, applications, training and professional networking in one place."
+                    data-problem-ar="يبحث المواهب التونسية عن فرص محلية ودولية، وتبحث الشركات عن ملفات مؤهلة — لكن السوق مليء بالوسطاء ومجموعات فيسبوك والسير الذاتية الضائعة. لا توجد مساحة أنيقة تجمع بين العروض والتطبيقات والتدريب والشبكات المهنية في مكان واحد."
+                    data-solution-fr="CareerLink est une plateforme tout-en-un qui connecte talents et opportunités en Tunisie et à l'international. Les candidats créent un profil complet avec compétences et expérience, postulent en un clic, suivent leurs candidatures, et accèdent à des formations ciblées. Les recruteurs publient des offres, filtrent les profils et communiquent via messagerie intégrée. 18k+ candidats actifs, 250+ entreprises connectées."
+                    data-solution-en="CareerLink is an all-in-one platform connecting talents with opportunities in Tunisia and abroad. Candidates build a complete profile with skills and experience, apply in one click, track their applications, and access targeted training. Recruiters post jobs, filter profiles and communicate via built-in messaging. 18k+ active candidates, 250+ connected companies."
+                    data-solution-ar="CareerLink هي منصة متكاملة تربط المواهب بالفرص في تونس والخارج. ينشئ المرشحون ملفًا شخصيًا كاملاً بالمهارات والخبرة، ويقدمون طلباتهم بنقرة واحدة، ويتابعون طلباتهم، ويصلون إلى تدريب مستهدف. ينشر أصحاب العمل الوظائف، ويصفون الملفات، ويتواصلون عبر المراسلة المدمجة. أكثر من 18 ألف مرشح نشط و250+ شركة متصلة."
+                    data-results-fr="• 18 000+ candidats actifs inscrits&#10;• 250+ entreprises connectées&#10;• Accès 24/7 à l'espace candidat&#10;• Visualisation des compétences, suivi des candidatures, messagerie intégrée&#10;• Mode sombre natif"
+                    data-results-en="• 18,000+ active candidates enrolled&#10;• 250+ connected companies&#10;• 24/7 access to candidate space&#10;• Skills visualization, application tracking, built-in messaging&#10;• Native dark mode"
+                    data-results-ar="• أكثر من 18,000 مرشح نشط مسجل&#10;• أكثر من 250 شركة متصلة&#10;• وصول على مدار الساعة إلى فضاء المرشح&#10;• تصور المهارات، تتبع الطلبات، المراسلة المدمجة&#10;• الوضع الداكن الأصلي"
+                    data-gallery="last work/careerlink login.png">
+                    <div class="project-img">
+                        <img src="last work/careerlink hero.png" alt="CareerLink" loading="lazy">
+                        <div class="project-overlay">
+                            <span class="project-overlay-btn">
+                                <span data-lang-fr>Voir l'étude</span>
+                                <span data-lang-en>View case study</span>
+                                <span data-lang-ar>عرض الدراسة</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-cat">
+                            <span data-lang-fr>Web / Emploi</span>
+                            <span data-lang-en>Web / Careers</span>
+                            <span data-lang-ar>ويب / توظيف</span>
+                        </span>
+                        <h3>CareerLink</h3>
+                        <p>
+                            <span data-lang-fr>Plateforme tout-en-un qui connecte talents et opportunités en Tunisie et à l'international.</span>
+                            <span data-lang-en>All-in-one platform connecting talents with opportunities in Tunisia and abroad.</span>
+                            <span data-lang-ar>منصة متكاملة تربط المواهب بالفرص في تونس والخارج.</span>
+                        </p>
+                    </div>
+                </article>
+                <article class="project" data-anim
+                    data-image="last work/site web uniboard.png"
+                    data-title="Uniboard"
+                    data-cat-fr="Web / Éducation" data-cat-en="Web / Education" data-cat-ar="ويب / تعليم"
+                    data-client-fr="Uniboard" data-client-en="Uniboard" data-client-ar="Uniboard"
+                    data-year="2025"
+                    data-duration-fr="5 mois" data-duration-en="5 months" data-duration-ar="5 أشهر"
+                    data-role-fr="Architecture IA, Design, Développement Full-Stack" data-role-en="AI Architecture, Design, Full-Stack Development" data-role-ar="بنية الذكاء الاصطناعي، التصميم، التطوير الكامل"
+                    data-stack="Next.js,OpenAI API,PostgreSQL,Prisma,Vercel"
+                    data-link="#"
+                    data-problem-fr="Les étudiants passent des heures à créer leurs propres fiches de révision et quiz. Les ressources existantes sont génériques, payantes ou désorganisées."
+                    data-problem-en="Students spend hours creating their own revision sheets and quizzes. Existing resources are generic, paid, or disorganized."
+                    data-problem-ar="يقضي الطلاب ساعات في إنشاء أوراق المراجعة والاختبارات الخاصة بهم. الموارد الموجودة عامة أو مدفوعة أو غير منظمة."
+                    data-solution-fr="Plateforme éducative qui transforme n'importe quel cours (PDF, notes, slides) en quiz interactifs, fiches de révision et résumés intelligents grâce à l'IA. Tableau de bord de progression personnalisé."
+                    data-solution-en="Education platform that turns any course (PDF, notes, slides) into interactive quizzes, revision sheets and smart summaries via AI. Personalized progress dashboard."
+                    data-solution-ar="منصة تعليمية تحول أي دورة (PDF، ملاحظات، شرائح) إلى اختبارات تفاعلية وأوراق مراجعة وملخصات ذكية عبر الذكاء الاصطناعي. لوحة تحكم تقدم شخصية."
+                    data-results-fr="• Génération de quiz en moins de 30 secondes&#10;• 500+ étudiants en bêta&#10;• 92% disent gagner du temps de révision&#10;• Stack scalable déployée sur Vercel"
+                    data-results-en="• Quiz generation in under 30 seconds&#10;• 500+ students in beta&#10;• 92% report saving revision time&#10;• Scalable stack deployed on Vercel"
+                    data-results-ar="• إنشاء اختبارات في أقل من 30 ثانية&#10;• أكثر من 500 طالب في النسخة التجريبية&#10;• 92٪ يقولون إنهم يوفرون وقت المراجعة&#10;• مكدس قابل للتطوير منتشر على Vercel">
+                    <div class="project-img">
+                        <img src="last work/site web uniboard.png" alt="Uniboard" loading="lazy">
+                        <div class="project-overlay">
+                            <span class="project-overlay-btn">
+                                <span data-lang-fr>Voir l'étude</span>
+                                <span data-lang-en>View case study</span>
+                                <span data-lang-ar>عرض الدراسة</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-cat">
+                            <span data-lang-fr>Web / Éducation</span>
+                            <span data-lang-en>Web / Education</span>
+                            <span data-lang-ar>ويب / تعليم</span>
+                        </span>
                         <h3>Uniboard</h3>
                         <p>
                             <span data-lang-fr>Plateforme éducative propulsée par l'IA avec quiz automatiques et suivi de progression.</span>
@@ -376,6 +834,7 @@
                         </p>
                     </div>
                 </article>
+                </div>
             </div>
         </div>
     </section>
@@ -396,68 +855,8 @@
                 </h2>
             </div>
 
-            <!-- Group photo with zoom animation -->
-            <div class="team-showcase">
-                <div class="team-group-photo">
-                    <img src="ideep equipe.jpeg" alt="IDeep Team" loading="lazy">
-                </div>
-                <div class="team-members-row">
-                    <div class="team-member-card" data-member="0" data-anim>
-                        <div class="member-zoom-circle">
-                            <div class="member-zoom-img" style="background-image: url('ideep equipe.jpeg'); background-position: 5% 15%; background-size: 600%;"></div>
-                        </div>
-                        <div class="member-card-info">
-                            <h3>Insaf Makhloufi</h3>
-                            <span>UI/UX Designer</span>
-                        </div>
-                    </div>
-                    <div class="team-member-card" data-member="1" data-anim>
-                        <div class="member-zoom-circle">
-                            <div class="member-zoom-img" style="background-image: url('ideep equipe.jpeg'); background-position: 24% 15%; background-size: 600%;"></div>
-                        </div>
-                        <div class="member-card-info">
-                            <h3>Ahmed Ayadi</h3>
-                            <span>Co-Founder & Developer</span>
-                        </div>
-                    </div>
-                    <div class="team-member-card" data-member="2" data-anim>
-                        <div class="member-zoom-circle">
-                            <div class="member-zoom-img" style="background-image: url('ideep equipe.jpeg'); background-position: 42% 15%; background-size: 600%;"></div>
-                        </div>
-                        <div class="member-card-info">
-                            <h3>Jihed Khlifi</h3>
-                            <span>Full-Stack Developer</span>
-                        </div>
-                    </div>
-                    <div class="team-member-card" data-member="3" data-anim>
-                        <div class="member-zoom-circle">
-                            <div class="member-zoom-img" style="background-image: url('ideep equipe.jpeg'); background-position: 58% 15%; background-size: 600%;"></div>
-                        </div>
-                        <div class="member-card-info">
-                            <h3>Malek Tirellil</h3>
-                            <span>Project Manager</span>
-                        </div>
-                    </div>
-                    <div class="team-member-card" data-member="4" data-anim>
-                        <div class="member-zoom-circle">
-                            <div class="member-zoom-img" style="background-image: url('ideep equipe.jpeg'); background-position: 76% 15%; background-size: 600%;"></div>
-                        </div>
-                        <div class="member-card-info">
-                            <h3>Yassmine Nouisser</h3>
-                            <span>Frontend Developer</span>
-                        </div>
-                    </div>
-                    <div class="team-member-card" data-member="5" data-anim>
-                        <div class="member-zoom-circle">
-                            <div class="member-zoom-img" style="background-image: url('ideep equipe.jpeg'); background-position: 95% 15%; background-size: 600%;"></div>
-                        </div>
-                        <div class="member-card-info">
-                            <h3>Youssef Jouini</h3>
-                            <span>Backend Developer</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- Cinematic scroll-driven team showcase -->
+            <div class="team-cinema" id="teamCinema"></div>
         </div>
     </section>
 
@@ -483,35 +882,335 @@
                 </h2>
             </div>
             <p class="contact-sub" data-anim>
-                <span data-lang-fr>Vous avez un projet en tête ? Nous serions ravis d'en discuter.</span>
-                <span data-lang-en>Have a project in mind? We'd love to hear from you.</span>
-                <span data-lang-ar>لديك مشروع في ذهنك؟ يسعدنا أن نسمع منك.</span>
+                <span data-lang-fr>Parlez-nous de votre projet. Nous revenons vers vous sous 24h.</span>
+                <span data-lang-en>Tell us about your project. We get back to you within 24h.</span>
+                <span data-lang-ar>أخبرنا عن مشروعك. نعود إليك خلال 24 ساعة.</span>
             </p>
-            <a href="mailto:contact@ideep.tn" class="contact-email" data-anim data-magnetic>contact@ideep.tn</a>
+
+            <form class="contact-form" id="contactForm" novalidate>
+                <!-- Web3Forms access key — REPLACE with your real key from https://web3forms.com -->
+                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+                <input type="hidden" name="subject" value="New project inquiry from ideep.tn">
+                <input type="hidden" name="from_name" value="IDeep Website">
+                <!-- Honeypot anti-spam -->
+                <input type="checkbox" name="botcheck" class="form-honeypot" tabindex="-1" autocomplete="off">
+
+                <div class="form-grid">
+                    <div class="form-field">
+                        <input type="text" name="name" id="form-name" required autocomplete="name" placeholder=" ">
+                        <label for="form-name">
+                            <span data-lang-fr>Nom *</span>
+                            <span data-lang-en>Name *</span>
+                            <span data-lang-ar>الاسم *</span>
+                        </label>
+                        <span class="form-line"></span>
+                    </div>
+                    <div class="form-field">
+                        <input type="email" name="email" id="form-email" required autocomplete="email" placeholder=" ">
+                        <label for="form-email">
+                            <span data-lang-fr>Email *</span>
+                            <span data-lang-en>Email *</span>
+                            <span data-lang-ar>البريد الإلكتروني *</span>
+                        </label>
+                        <span class="form-line"></span>
+                    </div>
+                    <div class="form-field">
+                        <input type="text" name="company" id="form-company" autocomplete="organization" placeholder=" ">
+                        <label for="form-company">
+                            <span data-lang-fr>Entreprise</span>
+                            <span data-lang-en>Company</span>
+                            <span data-lang-ar>الشركة</span>
+                        </label>
+                        <span class="form-line"></span>
+                    </div>
+                    <div class="form-field form-field-select">
+                        <select name="project_type" id="form-type" required>
+                            <option value="" disabled selected></option>
+                            <option value="web">Web</option>
+                            <option value="mobile">Mobile</option>
+                            <option value="ai">AI / Data</option>
+                            <option value="design">UI/UX Design</option>
+                            <option value="other" data-i18n-other>Other</option>
+                        </select>
+                        <label for="form-type">
+                            <span data-lang-fr>Type de projet *</span>
+                            <span data-lang-en>Project type *</span>
+                            <span data-lang-ar>نوع المشروع *</span>
+                        </label>
+                        <span class="form-line"></span>
+                        <span class="form-chevron">▾</span>
+                    </div>
+                    <div class="form-field form-field-select form-field-full">
+                        <select name="budget" id="form-budget" required>
+                            <option value="" disabled selected></option>
+                            <option value="<2k">&lt; 2 000 €</option>
+                            <option value="2-5k">2 000 € — 5 000 €</option>
+                            <option value="5-15k">5 000 € — 15 000 €</option>
+                            <option value="15k+">15 000 € +</option>
+                            <option value="discuss" data-i18n-discuss>To discuss</option>
+                        </select>
+                        <label for="form-budget">
+                            <span data-lang-fr>Budget estimé *</span>
+                            <span data-lang-en>Estimated budget *</span>
+                            <span data-lang-ar>الميزانية المقدرة *</span>
+                        </label>
+                        <span class="form-line"></span>
+                        <span class="form-chevron">▾</span>
+                    </div>
+                    <div class="form-field form-field-full form-field-textarea">
+                        <textarea name="message" id="form-message" rows="4" required placeholder=" "></textarea>
+                        <label for="form-message">
+                            <span data-lang-fr>Parlez-nous de votre projet *</span>
+                            <span data-lang-en>Tell us about your project *</span>
+                            <span data-lang-ar>أخبرنا عن مشروعك *</span>
+                        </label>
+                        <span class="form-line"></span>
+                    </div>
+                </div>
+
+                <div class="form-footer">
+                    <button type="submit" class="btn-magnetic form-submit" data-magnetic>
+                        <span class="btn-fill"></span>
+                        <span class="btn-text">
+                            <span class="form-submit-label">
+                                <span data-lang-fr>Envoyer le projet</span>
+                                <span data-lang-en>Send project</span>
+                                <span data-lang-ar>إرسال المشروع</span>
+                            </span>
+                            <span class="form-submit-loading">
+                                <span data-lang-fr>Envoi…</span>
+                                <span data-lang-en>Sending…</span>
+                                <span data-lang-ar>جارٍ الإرسال…</span>
+                            </span>
+                        </span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                    <a href="mailto:contact@ideep.tn" class="contact-fallback">contact@ideep.tn</a>
+                </div>
+
+                <div class="form-status" id="formStatus" aria-live="polite"></div>
+            </form>
+
             <div class="contact-socials" data-anim>
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61582675130530" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/ideep_2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@ideep.family" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
+        <div class="footer-glow"></div>
         <div class="footer-inner">
-            <div class="footer-left">
-                <img src="logo ideep.png" alt="IDeep" class="footer-logo">
-                <span>&copy; 2025 IDeep</span>
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="logo-ideep-transparent.png" alt="IDeep" class="footer-logo">
+                    <p class="footer-tagline">
+                        <span data-lang-fr>Studio digital indépendant. Nous concevons et développons des produits sur-mesure pour les marques qui refusent le générique.</span>
+                        <span data-lang-en>Independent digital studio. We design and build bespoke products for brands that refuse the generic.</span>
+                        <span data-lang-ar>استوديو رقمي مستقل. نصمم ونطور منتجات مخصصة للعلامات التجارية التي ترفض العادية.</span>
+                    </p>
+                    <div class="footer-socials">
+                        <a href="https://www.facebook.com/profile.php?id=61582675130530" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/ideep_2026" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@ideep.family" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col-title">
+                        <span data-lang-fr>Navigation</span>
+                        <span data-lang-en>Navigation</span>
+                        <span data-lang-ar>التنقل</span>
+                    </h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">
+                            <span data-lang-fr>À propos</span><span data-lang-en>About</span><span data-lang-ar>من نحن</span>
+                        </a></li>
+                        <li><a href="#services">
+                            <span data-lang-fr>Services</span><span data-lang-en>Services</span><span data-lang-ar>خدماتنا</span>
+                        </a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#team">
+                            <span data-lang-fr>Équipe</span><span data-lang-en>Team</span><span data-lang-ar>الفريق</span>
+                        </a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col-title">
+                        <span data-lang-fr>Expertise</span>
+                        <span data-lang-en>Expertise</span>
+                        <span data-lang-ar>الخبرات</span>
+                    </h4>
+                    <ul class="footer-links">
+                        <li>
+                            <span data-lang-fr>Design produit & UI</span>
+                            <span data-lang-en>Product & UI design</span>
+                            <span data-lang-ar>تصميم المنتج والواجهة</span>
+                        </li>
+                        <li>
+                            <span data-lang-fr>Développement Full-Stack</span>
+                            <span data-lang-en>Full-Stack development</span>
+                            <span data-lang-ar>التطوير الكامل</span>
+                        </li>
+                        <li>
+                            <span data-lang-fr>Plateformes SaaS</span>
+                            <span data-lang-en>SaaS platforms</span>
+                            <span data-lang-ar>منصات SaaS</span>
+                        </li>
+                        <li>
+                            <span data-lang-fr>Expériences 3D</span>
+                            <span data-lang-en>3D experiences</span>
+                            <span data-lang-ar>تجارب ثلاثية الأبعاد</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-col footer-col-contact">
+                    <h4 class="footer-col-title">
+                        <span data-lang-fr>Contact</span>
+                        <span data-lang-en>Contact</span>
+                        <span data-lang-ar>تواصل</span>
+                    </h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:hello@ideep.tn"><i class="far fa-envelope"></i> hello@ideep.tn</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Tunis, Tunisie</li>
+                    </ul>
+                    <a href="#contact" class="footer-cta">
+                        <span data-lang-fr>Démarrer un projet</span>
+                        <span data-lang-en>Start a project</span>
+                        <span data-lang-ar>ابدأ مشروعًا</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
-            <div class="footer-right">
-                <span>
-                    <span data-lang-fr>Fait avec passion par des étudiants</span>
-                    <span data-lang-en>Made with passion by students</span>
-                    <span data-lang-ar>صنع بشغف من قبل طلاب</span>
-                </span>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-bottom">
+                <div class="footer-copy">
+                    <span>&copy; 2026 IDeep.</span>
+                    <span class="footer-sep">·</span>
+                    <span>
+                        <span data-lang-fr>Tous droits réservés.</span>
+                        <span data-lang-en>All rights reserved.</span>
+                        <span data-lang-ar>جميع الحقوق محفوظة.</span>
+                    </span>
+                </div>
+                <div class="footer-made">
+                    <span data-lang-fr>Conçu avec passion en Tunisie</span>
+                    <span data-lang-en>Crafted with passion in Tunisia</span>
+                    <span data-lang-ar>صُنع بشغف في تونس</span>
+                </div>
+                <a href="#hero" class="footer-top-btn" aria-label="Back to top">
+                    <i class="fas fa-arrow-up"></i>
+                </a>
             </div>
         </div>
     </footer>
+
+    <!-- ========== CASE STUDY MODAL ========== -->
+    <div class="case-modal" id="caseModal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="case-modal-backdrop" data-close></div>
+        <div class="case-modal-shell">
+            <button class="case-modal-close" data-close aria-label="Close">
+                <span></span><span></span>
+            </button>
+            <div class="case-modal-scroll" data-lenis-prevent>
+                <header class="case-modal-hero">
+                    <div class="case-modal-hero-img">
+                        <img id="caseModalImage" src="" alt="">
+                    </div>
+                    <div class="case-modal-hero-overlay">
+                        <span class="case-modal-cat" id="caseModalCat"></span>
+                        <h2 class="case-modal-title" id="caseModalTitle"></h2>
+                    </div>
+                </header>
+
+                <div class="case-modal-body">
+                    <aside class="case-modal-meta">
+                        <div class="case-meta-row">
+                            <span class="case-meta-label">
+                                <span data-lang-fr>Client</span>
+                                <span data-lang-en>Client</span>
+                                <span data-lang-ar>العميل</span>
+                            </span>
+                            <span class="case-meta-value" id="caseModalClient"></span>
+                        </div>
+                        <div class="case-meta-row">
+                            <span class="case-meta-label">
+                                <span data-lang-fr>Année</span>
+                                <span data-lang-en>Year</span>
+                                <span data-lang-ar>السنة</span>
+                            </span>
+                            <span class="case-meta-value" id="caseModalYear"></span>
+                        </div>
+                        <div class="case-meta-row">
+                            <span class="case-meta-label">
+                                <span data-lang-fr>Durée</span>
+                                <span data-lang-en>Duration</span>
+                                <span data-lang-ar>المدة</span>
+                            </span>
+                            <span class="case-meta-value" id="caseModalDuration"></span>
+                        </div>
+                        <div class="case-meta-row">
+                            <span class="case-meta-label">
+                                <span data-lang-fr>Notre rôle</span>
+                                <span data-lang-en>Our role</span>
+                                <span data-lang-ar>دورنا</span>
+                            </span>
+                            <span class="case-meta-value" id="caseModalRole"></span>
+                        </div>
+                        <div class="case-meta-row case-meta-row-stack">
+                            <span class="case-meta-label">
+                                <span data-lang-fr>Stack technique</span>
+                                <span data-lang-en>Tech stack</span>
+                                <span data-lang-ar>التقنيات المستخدمة</span>
+                            </span>
+                            <div class="case-meta-stack" id="caseModalStack"></div>
+                        </div>
+                    </aside>
+
+                    <div class="case-modal-content">
+                        <div class="case-block">
+                            <span class="case-block-label">01 — <span data-lang-fr>Le défi</span><span data-lang-en>The challenge</span><span data-lang-ar>التحدي</span></span>
+                            <p id="caseModalProblem"></p>
+                        </div>
+                        <div class="case-block">
+                            <span class="case-block-label">02 — <span data-lang-fr>Notre approche</span><span data-lang-en>Our approach</span><span data-lang-ar>نهجنا</span></span>
+                            <p id="caseModalSolution"></p>
+                        </div>
+                        <div class="case-block">
+                            <span class="case-block-label">03 — <span data-lang-fr>Résultats</span><span data-lang-en>Results</span><span data-lang-ar>النتائج</span></span>
+                            <ul id="caseModalResults"></ul>
+                        </div>
+
+                        <div class="case-gallery" id="caseModalGallery"></div>
+
+                        <div class="case-cta">
+                            <h3>
+                                <span data-lang-fr>Un projet similaire en tête ?</span>
+                                <span data-lang-en>Have a similar project in mind?</span>
+                                <span data-lang-ar>هل لديك مشروع مماثل؟</span>
+                            </h3>
+                            <a href="#contact" class="btn-magnetic case-cta-btn" data-close>
+                                <span class="btn-fill"></span>
+                                <span class="btn-text">
+                                    <span data-lang-fr>Démarrer une discussion</span>
+                                    <span data-lang-en>Start a conversation</span>
+                                    <span data-lang-ar>ابدأ محادثة</span>
+                                </span>
+                                <span class="btn-arrow">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/three@0.152.0/build/three.min.js"></script>
@@ -519,9 +1218,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-    <script src="js/screen-content.js"></script>
-    <script src="js/scene3d.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/nav.js"></script>
+    <script src="js/screen-content.js?v=20260413g"></script>
+    <script src="js/scene3d.js?v=20260413g"></script>
+    <script src="js/main.js?v=20260413g"></script>
+    <script src="js/nav.js?v=20260413g"></script>
 </body>
 </html>

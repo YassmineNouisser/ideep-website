@@ -28,7 +28,7 @@
     // SCENE & CAMERA
     // ========================================
     var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 100);
+    var camera = new THREE.PerspectiveCamera(window.innerWidth < 768 ? 50 : 35, window.innerWidth / window.innerHeight, 0.1, 100);
     camera.position.set(0, 0.5, 6);
     camera.lookAt(0, 0, 0);
 
@@ -917,8 +917,8 @@
     // ========================================
     var scrollState = {
         progress: 0,
-        cameraX: 0, cameraY: 3.0, cameraZ: 2.5,
-        rotationY: 0, lidAngle: 0, laptopX: 0, laptopScale: isMobile ? 0.7 : 1,
+        cameraX: 0, cameraY: isMobile ? 3.5 : 4.5, cameraZ: isMobile ? 7.0 : 9.0,
+        rotationY: -Math.PI * 0.15, lidAngle: 0, laptopX: 0, laptopScale: isMobile ? 0.45 : 0.6,
         screenPowered: false,
         phoneArc: 0,
         tabletArc: 0,
@@ -943,9 +943,10 @@
         }
     });
 
-    // ---- PHASE 1 (0-12): DRAMATIC ENTRANCE ----
-    heroTl.to(scrollState, { cameraZ: 5.0, cameraY: 1.5, duration: 12, ease: 'power2.out' }, 0);
+    // ---- PHASE 1 (0-12): CINEMATIC DOLLY-IN ----
+    heroTl.to(scrollState, { cameraZ: isMobile ? 5.5 : 4.5, cameraY: 1.5, duration: 12, ease: 'power3.inOut' }, 0);
     heroTl.to(scrollState, { rotationY: Math.PI * 0.35, duration: 12, ease: 'power2.inOut' }, 0);
+    heroTl.to(scrollState, { laptopScale: isMobile ? 0.7 : 1, duration: 10, ease: 'power3.out' }, 0);
 
     // ---- PHASE 2 (12-26): LID OPENS + WEBSITE APPEARS ----
     heroTl.to(scrollState, {
@@ -975,8 +976,8 @@
     heroTl.to(scrollState, { screenScroll: 0.5, duration: 20, ease: 'none' }, 16);
 
     // ---- PHASE 3 (26-42): LAPTOP SLIDES RIGHT + PHONE ENTERS ----
-    heroTl.to(scrollState, { laptopX: isMobile ? 0.5 : 1.6, duration: 10, ease: 'power2.inOut' }, 26);
-    heroTl.to(scrollState, { cameraZ: 5.5, cameraX: -0.2, cameraY: 0.8, duration: 12, ease: 'power2.out' }, 26);
+    heroTl.to(scrollState, { laptopX: isMobile ? 0.3 : 1.6, duration: 10, ease: 'power2.inOut' }, 26);
+    heroTl.to(scrollState, { cameraZ: isMobile ? 6.8 : 5.5, cameraX: isMobile ? 0 : -0.2, cameraY: 0.8, duration: 12, ease: 'power2.out' }, 26);
     heroTl.to(scrollState, { rotationY: Math.PI * 0.6, duration: 14, ease: 'power2.inOut' }, 26);
     // Phone arc entrance (delayed to avoid overlapping laptop)
     heroTl.to(scrollState, { phoneArc: 1, duration: 12, ease: 'power3.out' }, 30);
@@ -988,8 +989,8 @@
     heroTl.to(scrollState, { phoneScroll: 0.7, duration: 14, ease: 'none' }, 30);
 
     // ---- PHASE 4 (42-56): TABLET ENTERS — LAPTOP MOVES AWAY ----
-    heroTl.to(scrollState, { laptopX: isMobile ? 2.5 : 3.5, duration: 10, ease: 'power2.inOut' }, 42);
-    heroTl.to(scrollState, { cameraZ: isMobile ? 7.5 : 7.0, cameraY: 0.8, cameraX: isMobile ? 0 : -0.5, duration: 12, ease: 'power2.inOut' }, 42);
+    heroTl.to(scrollState, { laptopX: isMobile ? 1.4 : 3.5, duration: 10, ease: 'power2.inOut' }, 42);
+    heroTl.to(scrollState, { cameraZ: isMobile ? 9.0 : 7.0, cameraY: 0.8, cameraX: isMobile ? 0 : -0.5, duration: 12, ease: 'power2.inOut' }, 42);
     heroTl.to(scrollState, { rotationY: Math.PI * 0.8, duration: 14, ease: 'power2.inOut' }, 42);
     // Tablet arc entrance
     heroTl.to(scrollState, { tabletArc: 1, duration: 12, ease: 'power3.out' }, 44);
@@ -1001,7 +1002,7 @@
     heroTl.to(scrollState, { tabletScroll: 0.8, duration: 14, ease: 'none' }, 46);
 
     // ---- PHASE 5 (56-72): ALL DEVICES SHOWCASE + HERO TEXT ----
-    heroTl.to(scrollState, { cameraZ: isMobile ? 8.5 : 8.0, cameraY: 0.6, duration: 14, ease: 'power2.inOut' }, 56);
+    heroTl.to(scrollState, { cameraZ: isMobile ? 10.5 : 8.0, cameraY: 0.6, duration: 14, ease: 'power2.inOut' }, 56);
     heroTl.to(scrollState, { rotationY: Math.PI * 1.2, duration: 16, ease: 'none' }, 56);
     // Hero text appears
     heroTl.to('.hero-tag', { opacity: 1, duration: 4 }, 60);
@@ -1022,7 +1023,7 @@
     heroTl.to(scrollState, { phoneArc: 0, duration: 10, ease: 'power2.in' }, 91);
     heroTl.to(scrollState, { tabletArc: 0, duration: 10, ease: 'power2.in' }, 91);
     heroTl.to(screenLight, { intensity: 0, duration: 8 }, 91);
-    heroTl.to('.hero-scroll-indicator', { opacity: 1, duration: 5 }, 95);
+    // Scroll indicator visibility is controlled by main.js (visible at load, fades on scroll)
 
     // ========================================
     // GLOBE SCROLL TRIGGERS (post-hero)
@@ -1088,30 +1089,43 @@
         var arcT = scrollState.phoneArc;
         if (arcT > 0.01) {
             var sX = 5, sY = -4, cX = -0.5, cY = 1.0;
-            var eX = isMobile ? -0.3 : -1.8, eY = isMobile ? -0.5 : 0.4;
+            var eX = isMobile ? -1.0 : -1.8, eY = isMobile ? -0.2 : 0.4;
             phone.position.x = (1 - arcT) * (1 - arcT) * sX + 2 * (1 - arcT) * arcT * cX + arcT * arcT * eX;
             phone.position.y = (1 - arcT) * (1 - arcT) * sY + 2 * (1 - arcT) * arcT * cY + arcT * arcT * eY;
             phone.position.y += Math.sin(time * 0.3 + 1) * 0.015;
-            phone.rotation.y = 0.15 * arcT + mouse.x * 0.3;
+            // Subtle entry rotation: starts spinning, settles
+            phone.rotation.y = 0.15 * arcT + (1 - arcT) * Math.PI * 0.4 + mouse.x * 0.3;
+            // Scale from 0 → 1 with overshoot
+            var phScale = arcT < 1 ? Math.min(1, arcT * 1.15) : 1;
+            phone.scale.setScalar(phScale);
+            phone.visible = true;
         } else {
             phone.position.set(4, -3, 0);
+            phone.scale.setScalar(0);
+            phone.visible = false;
         }
 
         // ---- TABLET ARC TRAJECTORY ----
-        // Enters from top-right, lands above & in front of laptop
         var tabT = scrollState.tabletArc;
         if (tabT > 0.01) {
             var tsX = 4, tsY = 3.0, tcX = -1, tcY = 1.2;
-            var teX = isMobile ? 0 : -0.8, teY = isMobile ? 0.3 : 0.5;
+            var teX = isMobile ? -0.3 : -0.8, teY = isMobile ? 1.2 : 0.5;
             tablet.position.x = (1 - tabT) * (1 - tabT) * tsX + 2 * (1 - tabT) * tabT * tcX + tabT * tabT * teX;
             tablet.position.y = (1 - tabT) * (1 - tabT) * tsY + 2 * (1 - tabT) * tabT * tcY + tabT * tabT * teY;
             tablet.position.y += Math.sin(time * 0.25 + 2) * 0.012;
             tablet.position.z = 1.0 * tabT;
-            tablet.rotation.y = -0.1 * tabT + mouse.x * 0.25;
+            // Entry rotation that settles
+            tablet.rotation.y = -0.1 * tabT + (1 - tabT) * -Math.PI * 0.3 + mouse.x * 0.25;
             tablet.rotation.x = -0.02;
-            tablet.rotation.z = 0;
+            tablet.rotation.z = (1 - tabT) * 0.15;
+            // Scale from 0 → 1
+            var tbScale = tabT < 1 ? Math.min(1, tabT * 1.15) : 1;
+            tablet.scale.setScalar(tbScale);
+            tablet.visible = true;
         } else {
             tablet.position.set(5, -4, 1);
+            tablet.scale.setScalar(0);
+            tablet.visible = false;
         }
 
         // Camera
@@ -1174,6 +1188,7 @@
     // ========================================
     window.addEventListener('resize', function () {
         camera.aspect = window.innerWidth / window.innerHeight;
+        camera.fov = window.innerWidth < 768 ? 50 : 35;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
     });
