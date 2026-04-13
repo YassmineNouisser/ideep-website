@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "ideep-website-udmm.vercel.app"
+        }
+      ],
+      "destination": "https://www.ideep.tn/:path*",
+      "permanent": true
+    }
+  ]
+}

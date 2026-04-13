@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /cpideep/
+
+Sitemap: https://www.ideep.tn/sitemap.xml
