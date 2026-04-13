@@ -504,7 +504,7 @@
                 name: 'Ahmed Ayadi',
                 role: 'CEO — Chief Executive Officer',
                 fx: 90, fy: 58,
-                email: 'ahmed.ayadi@ideep.tn',
+                email: 'ahmed.ayadi@esprit.tn',
                 duties_fr: ['Stratégie de l\'entreprise', 'Partenariats & clients', 'Décisions business'],
                 duties_en: ['Company strategy', 'Partnerships & clients', 'Business decisions'],
                 duties_ar: ['استراتيجية الشركة', 'الشراكات والعملاء', 'القرارات التجارية']
@@ -513,7 +513,7 @@
                 name: 'Yassmine Nouisser',
                 role: 'Marketing & Business Development Manager',
                 fx: 76, fy: 57,
-                email: 'yassmine.nouisser@ideep.tn',
+                email: 'yassmine.nouisser@esprit.tn',
                 duties_fr: ['Stratégie marketing', 'Réseaux sociaux', 'Acquisition client'],
                 duties_en: ['Marketing strategy', 'Social media', 'Client acquisition'],
                 duties_ar: ['استراتيجية التسويق', 'وسائل التواصل الاجتماعي', 'اكتساب العملاء']
@@ -522,7 +522,7 @@
                 name: 'Youssef Jouini',
                 role: 'CTO — Chief Technology Officer',
                 fx: 57, fy: 56,
-                email: 'youssef.jouini@ideep.tn',
+                email: 'youssef.jouini@esprit.tn',
                 duties_fr: ['Architecture technique', 'Supervision technique', 'Sécurité & infrastructure'],
                 duties_en: ['Technology architecture', 'Technical supervision', 'Security & infrastructure'],
                 duties_ar: ['البنية التقنية', 'الإشراف التقني', 'الأمن والبنية التحتية']
@@ -531,7 +531,7 @@
                 name: 'Insaf Makhloufi',
                 role: 'Front-End Developer / UI Engineer',
                 fx: 42, fy: 58,
-                email: 'insaf.makhloufi@ideep.tn',
+                email: 'insaf.makhloufi@esprit.tn',
                 duties_fr: ['Interfaces utilisateur', 'Design responsive', 'Intégration UI'],
                 duties_en: ['User interface', 'Responsive design', 'UI integration'],
                 duties_ar: ['واجهات المستخدم', 'التصميم المتجاوب', 'تكامل واجهة المستخدم']
@@ -540,7 +540,7 @@
                 name: 'Jihed Khlifi',
                 role: 'Full-Stack Developer',
                 fx: 32, fy: 54,
-                email: 'jihed.khlifi@ideep.tn',
+                email: 'jihed.khlifi@esprit.tn',
                 duties_fr: ['Développement front-end & back-end', 'Implémentation des fonctionnalités', 'APIs & bases de données'],
                 duties_en: ['Front-end & back-end development', 'Feature implementation', 'APIs & databases'],
                 duties_ar: ['تطوير الواجهة الأمامية والخلفية', 'تنفيذ الميزات', 'واجهات API وقواعد البيانات']
@@ -549,7 +549,7 @@
                 name: 'Malek Tirellil',
                 role: 'UI/UX Designer',
                 fx: 18, fy: 52,
-                email: 'malek.tirellil@ideep.tn',
+                email: 'malek.tirellil@esprit.tn',
                 duties_fr: ['Design produit', 'Expérience utilisateur', 'Branding'],
                 duties_en: ['Product design', 'User experience', 'Branding'],
                 duties_ar: ['تصميم المنتج', 'تجربة المستخدم', 'الهوية البصرية']
@@ -1086,17 +1086,17 @@
         var msgs = {
             fr: {
                 success: '✓ Message envoyé. Nous revenons vers vous sous 24h.',
-                error: '✕ Une erreur est survenue. Réessayez ou écrivez à contact@ideep.tn',
+                error: '✕ Une erreur est survenue. Réessayez ou écrivez à contact@esprit.tn',
                 invalid: '✕ Vérifiez les champs requis.'
             },
             en: {
                 success: '✓ Message sent. We get back to you within 24h.',
-                error: '✕ Something went wrong. Try again or email contact@ideep.tn',
+                error: '✕ Something went wrong. Try again or email contact@esprit.tn',
                 invalid: '✕ Check required fields.'
             },
             ar: {
                 success: '✓ تم إرسال الرسالة. سنعود إليك خلال 24 ساعة.',
-                error: '✕ حدث خطأ ما. حاول مرة أخرى أو راسلنا على contact@ideep.tn',
+                error: '✕ حدث خطأ ما. حاول مرة أخرى أو راسلنا على contact@esprit.tn',
                 invalid: '✕ تحقق من الحقول المطلوبة.'
             }
         };
