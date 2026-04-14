@@ -1086,17 +1086,17 @@
         var msgs = {
             fr: {
                 success: '✓ Message envoyé. Nous revenons vers vous sous 24h.',
-                error: '✕ Une erreur est survenue. Réessayez ou écrivez à contact@esprit.tn',
+                error: '✕ Une erreur est survenue. Réessayez ou écrivez à ideep.startup@gmail.com',
                 invalid: '✕ Vérifiez les champs requis.'
             },
             en: {
                 success: '✓ Message sent. We get back to you within 24h.',
-                error: '✕ Something went wrong. Try again or email contact@esprit.tn',
+                error: '✕ Something went wrong. Try again or email ideep.startup@gmail.com',
                 invalid: '✕ Check required fields.'
             },
             ar: {
                 success: '✓ تم إرسال الرسالة. سنعود إليك خلال 24 ساعة.',
-                error: '✕ حدث خطأ ما. حاول مرة أخرى أو راسلنا على contact@esprit.tn',
+                error: '✕ حدث خطأ ما. حاول مرة أخرى أو راسلنا على ideep.startup@gmail.com',
                 invalid: '✕ تحقق من الحقول المطلوبة.'
             }
         };

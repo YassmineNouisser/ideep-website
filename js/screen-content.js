@@ -177,7 +177,7 @@
         c.fillStyle = '#2D9CDB'; c.font = 'bold 18px sans-serif'; c.fillText('IDeep', 60, y + 40);
         c.fillStyle = '#64748b'; c.font = '12px sans-serif';
         c.fillText('Studio de développement digital', 60, y + 62);
-        c.fillText('Tunisie — contact@esprit.tn', 60, y + 82);
+        c.fillText('Tunisie — ideep.startup@gmail.com', 60, y + 82);
         c.fillStyle = '#4a5568'; c.font = '10px sans-serif'; c.fillText('© 2025 IDeep. Tous droits réservés.', 60, y + 130);
     }
 

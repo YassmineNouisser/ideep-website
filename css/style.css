@@ -563,7 +563,7 @@ img { max-width: 100%; display: block; }
 /* Apple-style luxe scroll indicator */
 .hero-scroll-indicator {
     position: fixed;
-    bottom: 2.5rem;
+    bottom: 4.5rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -3093,7 +3093,7 @@ body.modal-open { overflow: hidden; }
     .project-arrow { display: none; }
 
     /* Scroll indicator: smaller & higher on mobile */
-    .hero-scroll-indicator { bottom: 1.5rem; gap: 0.6rem; }
+    .hero-scroll-indicator { bottom: 3.5rem; gap: 0.6rem; }
     .scroll-mouse { width: 22px; height: 36px; border-radius: 12px; }
     .scroll-mouse-dot { top: 6px; width: 2.5px; height: 7px; }
     .scroll-label { font-size: 0.6rem; letter-spacing: 0.18em; }
@@ -3225,7 +3225,7 @@ body.modal-open { overflow: hidden; }
     .contact-email { font-size: clamp(1rem, 4vw, 1.4rem); }
 
     /* Scroll indicator extra small */
-    .hero-scroll-indicator { bottom: 1.2rem; gap: 0.5rem; }
+    .hero-scroll-indicator { bottom: 3rem; gap: 0.5rem; }
     .scroll-mouse { width: 20px; height: 32px; }
     .scroll-label { font-size: 0.55rem; letter-spacing: 0.15em; }
     .scroll-progress-bar { height: 1.5px; }
